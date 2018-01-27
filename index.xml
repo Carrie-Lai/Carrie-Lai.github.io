@@ -24,6 +24,17 @@
     </item>
     
     <item>
+      <title>建置Hugo Blog</title>
+      <link>https://Carrie-Lai.github.io/post/createhugoblog/</link>
+      <pubDate>Sun, 28 Jan 2018 00:09:10 +0800</pubDate>
+      
+      <guid>https://Carrie-Lai.github.io/post/createhugoblog/</guid>
+      <description>&lt;p&gt;花了一個晚上在弄Hugo的環境，得把過程記下來避免之後忘記&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>StringUtils、CollectionUtils與BeanUtils</title>
       <link>https://Carrie-Lai.github.io/post/threeutils/</link>
       <pubDate>Sat, 27 Jan 2018 22:52:00 +0800</pubDate>

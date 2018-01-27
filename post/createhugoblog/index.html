@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>建置Hugo Blog</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="Carrie Lai" />
+  <meta name="description" content="花了一個晚上在弄Hugo的環境，得把過程記下來避免之後忘記
+
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="建置Hugo Blog" />
+    <meta name="twitter:description" content="花了一個晚上在弄Hugo的環境，得把過程記下來避免之後忘記
+
+" />
+    <meta name="twitter:image" content="https://Carrie-Lai.github.io/media/posts/createHugoBlog/hugo01.png" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="建置Hugo Blog" />
+  <meta property="og:description" content="花了一個晚上在弄Hugo的環境，得把過程記下來避免之後忘記
+
+" />
+  <meta property="og:url" content="https://Carrie-Lai.github.io/post/createhugoblog/" />
+  <meta property="og:image" content="https://Carrie-Lai.github.io/media/posts/createHugoBlog/hugo01.png" />
+
+
+
+
+<meta name="generator" content="Hugo 0.34" />
+
+
+<link rel="canonical" href="https://Carrie-Lai.github.io/post/createhugoblog/" />
+<link rel="alternative" href="https://Carrie-Lai.github.io/index.xml" title="J星人的世界" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="wSLxwoc2zA36x4vRrmirCr0MeR1luAAvgHhtSvjbyxU" />
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="J星人的世界" />
+<meta name="msapplication-tooltip" content="J星人的世界" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://Carrie-Lai.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://Carrie-Lai.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://Carrie-Lai.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://Carrie-Lai.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://Carrie-Lai.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://Carrie-Lai.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://Carrie-Lai.github.io/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+        <a title="Go to comments" class="to-comment" href="#disqus_thread"><span class="icon icon-comment"></span></a>
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://Carrie-Lai.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">J星人的世界</h2>
+  
+  <p class="subtitle">/* A Java Programmer */</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://Carrie-Lai.github.io/">首頁</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://Carrie-Lai.github.io/tags/">標籤</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://Carrie-Lai.github.io/about/">關於</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://Carrie-Lai.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">建置Hugo Blog</h1>
+      <p class="post-meta">@Carrie Lai · Jan 28, 2018 · 2 min read</p>
+    </header>
+    <article class="post-content"><p>花了一個晚上在弄Hugo的環境，得把過程記下來避免之後忘記</p>
+
+<p></p>
+
+<p><img src="https://Carrie-Lai.github.io/media/posts/createHugoBlog/hugo01.png" alt="" /></p>
+
+<h2 id="為何選擇hugo">為何選擇Hugo？</h2>
+
+<p>其實我本來沒有寫Blog的習慣，以前申請過像Pixnet、Blogspot之類的，也都寫沒幾篇文章就荒廢在那邊了，但從在資策會上課開始，一直到現在工作了一陣子，總感覺好像有需要把自己在寫程式時學到的一些東西記錄下來，於是開始找尋適合落腳的Blog，一開始是使用Hexo+Github Pages，覺得弄起來好麻煩，需要安裝許多插件(今天爬文時也看到不少人說隨著內容越來越多，效能明顯變慢，所以更回不去了)，後來有考慮過Medium、簡書等平台，但感覺台灣的使用者沒有很多，加上後者經常發生原創文章被抄襲的情況，所以也都捨棄。</p>
+
+<p>無意中發現了還可以利用Hugo在Github Pages上建置Blog，比起Hexo簡單不少，而且效能也好，跟Hexo一樣是使用<a href="http://markdown.tw/" target="_blank">Markdown</a>來撰寫文章，非常適合程式設計師使用。</p>
+
+<h2 id="關於hugo">關於Hugo</h2>
+
+<p>Hugo本身是使用Go語言編寫，可以讓使用者快速建置一個靜態Blog</p>
+
+<ul>
+<li><a href="http://gohugo.io/" target="_blank">官網</a></li>
+<li><a href="https://github.com/gohugoio/hugo" target="_blank">GitHub</a></li>
+</ul>
+
+<h2 id="準備軟體">準備軟體</h2>
+
+<ul>
+<li><a href="https://git-for-windows.github.io/" target="_blank">msysGit</a>：Git相關的操作我大多習慣使用安裝好之後會出現的Git Bash來進行，安裝時建議都使用預設值就好，裝好後的一些設定可在網上找到教學</li>
+<li><a href="https://www.sublimetext.com/3" target="_blank">Sublime Text 3</a>：用來打文章跟做一些設定相當方便的軟體
+
+<ul>
+<li><a href="https://medium.com/@KenjiChao/%E6%89%93%E9%80%A0%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E7%9A%84%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-sublime-text-3-evernote-markdown-39c10d170231#.7863j3cp8" target="_blank">參考教學1</a></li>
+<li><a href="http://blog.miniasp.com/post/2014/01/06/Useful-tool-Sublime-Text-3-Quick-Start.aspx" target="_blank">參考教學2</a></li>
+</ul></li>
+</ul>
+
+<h2 id="建置過程">建置過程</h2>
+
+<p>官方有提供滿清楚的<a href="https://gohugo.io/getting-started/installing/" target="_blank">文件</a>說明如何安裝及設定Hugo，網路上也可以找到<a href="http://www.gohugo.org/doc/overview/installing/" target="_blank">中文版的文件</a></p>
+
+<p>以下是我的建置過程：</p>
+
+<h3 id="安裝hugo">安裝Hugo</h3>
+
+<ol>
+<li>到<a href="https://github.com/gohugoio/hugo/releases" target="_blank">官網提供的下載點</a>根據自己的作業系統下載對應的安裝包，我使用的64位元的Windows，所以下載<code>hugo_0.34_Windows-64bit.zip</code>(目前最新版本為0.34)</li>
+<li>將下載回來的zip解壓縮，資料夾裡面會有三個檔案，最重要的是hugo.exe，將該資料夾的路徑加到環境變數的path中</li>
+<li>在cmd下指令
+<code>hugo version</code>
+如果出現類似Hugo Static Site Generator v0.34 windows/amd64 BuildDate: 2018-01-22T12:07:11Z這樣的訊息就代表安裝成功</li>
+</ol>
+
+<h3 id="初始化blog及安裝主題">初始化Blog及安裝主題</h3>
+
+<ol>
+<li>找個地方當做是要存放Blog的資料夾，下指令
+<code>hugo new site 目標資料夾路徑</code>
+成功的話就會在底下出現一堆訊息，原本空白的資料夾也會多了一些東西出來
+<img src="https://Carrie-Lai.github.io/media/posts/createHugoBlog/install.png" alt="" /></li>
+<li>Hugo有許多<a href="https://themes.gohugo.io/" target="_blank">主題</a>可以選擇，選擇一個自己看得順眼的主題，將其clone到themes資料夾底下，例如我選的是<a href="https://github.com/laozhu/hugo-nuo" target="_blank">Hugo Nuo</a>這個主題，先在cmd移動到themes資料夾，接著下指令
+<code>git clone https://github.com/laozhu/hugo-nuo</code>
+成功的話就會看到有資料夾生出來了
+<img src="https://Carrie-Lai.github.io/media/posts/createHugoBlog/theme.png" alt="" /></li>
+<li>每個主題有不同的值可以設定，但都是在根目錄底下的<code>config.toml</code>做設定，主題的說明文件上應該都會說明設定方式，一般在這邊可能會花上比較多時間，以Hugo Nuo這個主題來說，我將<code>hugo-nuo\static\img</code>底下的圖片替換掉，此外透過<code>hugo-nuo\static\css\bundle.css</code>修改側邊欄的字型、頭像屬性還有文章超連結的顏色(bundle.css的內容是壓縮過的，原始碼可在<code>hugo-nuo\src\styles\partials</code>底下找到，方便對照)
+&gt; 字型可在<a href="https://fonts.google.com/" target="_blank">Google Fonts</a>找自己喜歡的下載下來放到<code>hugo-nuo\static\fonts</code>後再修改bundle.css</li>
+</ol>
+
+<h3 id="創建頁面">創建頁面</h3>
+
+<ol>
+<li><p>關於頁面：在根目錄下指令
+<code>hugo new about.md</code>
+會在content資料夾底下產生一個about.md，打開該檔案，Hugo Nuo主題的關於頁面設定方式如下：</p>
+
+<pre><code>---
+title: &quot;關於&quot;
+date: 2018-01-27T20:19:21+08:00
+layout: &quot;about&quot;
+menu: &quot;main&quot;
+weight: 50
+comments: false
+---
+</code></pre>
+
+<p>title：標題，預設為檔名
+date：日期，創建時會自動帶出
+layout：頁面布局，有<code>about</code>和<code>links</code>兩種可選
+menu：該頁面是否加入到側邊欄
+weight：權重，用來調整該頁面在側邊欄排序，和其他側邊欄顯示的項目為相對
+comments：不一定要有，調整允不允許評論</p></li>
+
+<li><p>一般頁面：建議使用同一個資料夾集中管理，例如在根目錄下指令
+<code>hugo new post/welcome.md</code>
+會在content/post資料夾底下產生一個welcome.md，以這篇文章的頁面資訊為例</p>
+
+<pre><code>---
+title: &quot;建置Hugo Blog&quot;
+author: &quot;Carrie Lai&quot;
+cover: &quot;/media/posts/createHugoBlog/hugo01.png&quot;
+date: 2018-01-28T00:09:10+08:00
+tags: [&quot;Hugo&quot;]
+draft: false
+---
+</code></pre>
+
+<p>cover：顯示在首頁的封面圖
+tags：此篇文章的標籤，會顯示在文章底部，在標籤頁面點選<code>Hugo</code>標籤也可找到本篇文章
+draft：是否為草稿</p></li>
+</ol>
+
+<p>順帶一提可在archetypes資料夾當中的default.md設定文章預設的模板，可以省下一些時間</p>
+
+<h3 id="預覽">預覽</h3>
+
+<ol>
+<li>產生靜態頁面：在根目錄下指令
+<code>hugo</code>
+會產生Blog的靜態頁面，預設放在public資料夾底下</li>
+<li>預覽：在根目錄下指令
+<code>hugo server</code>
+```
+[K25lBuilding sites … [?25h
+               | EN
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;+&mdash;-+
+Pages            |  8
+Paginator pages  |  0
+Non-page files   |  0
+Static files     | 26
+Processed images |  0
+Aliases          |  1
+Sitemaps         |  1
+Cleaned          |  0</li>
+</ol>
+
+<p>Total in 163 ms
+Watching for changes in D:\myHugoBlog\site{content,data,layouts,static,themes}
+Serving pages from memory
+Running in Fast Render Mode. For full rebuilds on change: hugo server &ndash;disableFastRender
+Web Server is available at <a href="http://localhost:1313/">http://localhost:1313/</a> (bind address 127.0.0.1)
+Press Ctrl+C to stop</p>
+
+<pre><code>
+會產生靜態頁面並產生預覽內容，可以在瀏覽器經由`http://localhost:1313/`查看，且支援熱部署(livereload)，修改文章或是css之類的東西時是不用重啟的，相當方便
+![livereload](/media/posts/createHugoBlog/livereload.png)
+
+
+### 部署到Github Pages
+
+11. 首先到&lt;a href=&quot;https://github.com/&quot; target=&quot;_blank&quot;&gt;Github&lt;/a&gt;網站申請一個帳號，如果已經有帳號了可以直接跳到下一步
+12. 在首頁點選New repository，
+Repository name輸入`你的username.github.io`，比如說username為example，就輸入example.github.io，創建好之後會看到一行網址
+`https://github.com/你的username/你的username.github.io.git`，之後做部署時需要它
+13. 找一個要拿來做為本地repository的資料夾，按右鍵打開git bash，如果是第一次使用，需先設定部署時的使用者名稱及email(只要設定一次即可)
+</code></pre>
+
+<p>$ git config &ndash;global user.name &ldquo;你的username&rdquo;
+$ git config &ndash;global user.email aaa@example.com</p>
+
+<pre><code>14. 下指令
+`git clone https://github.com/你的username/你的username.github.io.git`
+可以看到剛剛在Github上創的Repository被拉下來了，將Blog根目錄的public資料夾內的東西都複製到Repository資料夾中，接著下以下指令，將內容部署到Github Pages
+</code></pre>
+
+<p>git add -A
+git commit -m &ldquo;輸入你要打的內容&rdquo;
+git push origin master
+```</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://Carrie-Lai.github.io/tags/hugo"><span class="tag">Hugo</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.
+      </p>
+    </footer>
+    
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ahjiong" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 J星人的世界</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://Carrie-Lai.github.io/js/bundle.js"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-40443654-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+  </body>
+</html>
