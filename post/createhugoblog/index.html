@@ -413,20 +413,26 @@ Press Ctrl+C to stop
 <li>在首頁點選New repository，
 Repository name輸入<code>你的username.github.io</code>，比如說username為example，就輸入example.github.io，創建好之後會看到一行網址
 <code>https://github.com/你的username/你的username.github.io.git</code>，之後做部署時需要它</li>
-<li>找一個要拿來做為本地repository的資料夾，按右鍵打開git bash，如果是第一次使用，需先設定部署時的使用者名稱及email(只要設定一次即可)
-<code>
-$ git config --global user.name &quot;你的username&quot;
+<li>找一個要拿來做為本地repository的資料夾，按右鍵打開git bash，如果是第一次使用，需先設定部署時的使用者名稱及email(只要設定一次即可)</li>
+</ol>
+
+<pre><code>$ git config --global user.name &quot;你的username&quot;
 $ git config --global user.email aaa@example.com
-</code></li>
-<li>下指令
-<code>git clone https://github.com/你的username/你的username.github.io.git</code>
-可以看到剛剛在Github上創的Repository被拉下來了，將Blog根目錄的public資料夾內的東西都複製到Repository資料夾中，接著下以下指令，將內容部署到Github Pages
-<code>
-git add -A
+</code></pre>
+
+<ol>
+<li>下指令</li>
+</ol>
+
+<pre><code>git clone https://github.com/你的username/你的username.github.io.git
+</code></pre>
+
+<p>可以看到剛剛在Github上創的Repository被拉下來了，將Blog根目錄的public資料夾內的東西都複製到Repository資料夾中，接著下以下指令，將內容部署到Github Pages</p>
+
+<pre><code>git add -A
 git commit -m &quot;輸入你要打的內容&quot;
 git push origin master
-</code></li>
-</ol></article>
+</code></pre></article>
     <footer class="post-footer">
       
       <ul class="post-tags">
