@@ -261,32 +261,48 @@
 <ol>
 <li>到<a href="https://github.com/gohugoio/hugo/releases" target="_blank">官網提供的下載點</a>根據自己的作業系統下載對應的安裝包，我使用的64位元的Windows，所以下載<code>hugo_0.34_Windows-64bit.zip</code>(目前最新版本為0.34)</li>
 <li>將下載回來的zip解壓縮，資料夾裡面會有三個檔案，最重要的是hugo.exe，將該資料夾的路徑加到環境變數的path中</li>
-<li>在cmd下指令
-<code>hugo version</code>
-如果出現類似Hugo Static Site Generator v0.34 windows/amd64 BuildDate: 2018-01-22T12:07:11Z這樣的訊息就代表安裝成功</li>
+<li>在cmd下指令</li>
 </ol>
+
+<pre><code>hugo version
+</code></pre>
+
+<p>如果出現類似Hugo Static Site Generator v0.34 windows/amd64 BuildDate: 2018-01-22T12:07:11Z這樣的訊息就代表安裝成功</p>
 
 <h3 id="初始化blog及安裝主題">初始化Blog及安裝主題</h3>
 
 <ol>
-<li>找個地方當做是要存放Blog的資料夾，下指令
-<code>hugo new site 目標資料夾路徑</code>
-成功的話就會在底下出現一堆訊息，原本空白的資料夾也會多了一些東西出來
-<img src="https://Carrie-Lai.github.io/media/posts/createHugoBlog/install.png" alt="" /></li>
-<li>Hugo有許多<a href="https://themes.gohugo.io/" target="_blank">主題</a>可以選擇，選擇一個自己看得順眼的主題，將其clone到themes資料夾底下，例如我選的是<a href="https://github.com/laozhu/hugo-nuo" target="_blank">Hugo Nuo</a>這個主題，先在cmd移動到themes資料夾，接著下指令
-<code>git clone https://github.com/laozhu/hugo-nuo</code>
-成功的話就會看到有資料夾生出來了
-<img src="https://Carrie-Lai.github.io/media/posts/createHugoBlog/theme.png" alt="" /></li>
-<li>每個主題有不同的值可以設定，但都是在根目錄底下的<code>config.toml</code>做設定，主題的說明文件上應該都會說明設定方式，一般在這邊可能會花上比較多時間，以Hugo Nuo這個主題來說，我將<code>hugo-nuo\static\img</code>底下的圖片替換掉，此外透過<code>hugo-nuo\static\css\bundle.css</code>修改側邊欄的字型、頭像屬性還有文章超連結的顏色(bundle.css的內容是壓縮過的，原始碼可在<code>hugo-nuo\src\styles\partials</code>底下找到，方便對照)
-&gt; 字型可在<a href="https://fonts.google.com/" target="_blank">Google Fonts</a>找自己喜歡的下載下來放到<code>hugo-nuo\static\fonts</code>後再修改bundle.css</li>
+<li>找個地方當做是要存放Blog的資料夾，下指令</li>
 </ol>
+
+<pre><code>hugo new site 目標資料夾路徑
+</code></pre>
+
+<p>成功的話就會在底下出現一堆訊息，原本空白的資料夾也會多了一些東西出來
+<img src="https://Carrie-Lai.github.io/media/posts/createHugoBlog/install.png" alt="" />
+5. Hugo有許多<a href="https://themes.gohugo.io/" target="_blank">主題</a>可以選擇，選擇一個自己看得順眼的主題，將其clone到themes資料夾底下，例如我選的是<a href="https://github.com/laozhu/hugo-nuo" target="_blank">Hugo Nuo</a>這個主題，先在cmd移動到themes資料夾，接著下指令</p>
+
+<pre><code>git clone https://github.com/laozhu/hugo-nuo
+</code></pre>
+
+<p>成功的話就會看到有資料夾生出來了
+<img src="https://Carrie-Lai.github.io/media/posts/createHugoBlog/theme.png" alt="" />
+6. 每個主題有不同的值可以設定，但都是在根目錄底下的<code>config.toml</code>做設定，主題的說明文件上應該都會說明設定方式，一般在這邊可能會花上比較多時間，以Hugo Nuo這個主題來說，我將<code>hugo-nuo\static\img</code>底下的圖片替換掉，此外透過<code>hugo-nuo\static\css\bundle.css</code>修改側邊欄的字型、頭像屬性還有文章超連結的顏色(bundle.css的內容是壓縮過的，原始碼可在<code>hugo-nuo\src\styles\partials</code>底下找到，方便對照)</p>
+
+<blockquote>
+<p>字型可在<a href="https://fonts.google.com/" target="_blank">Google Fonts</a>找自己喜歡的下載下來放到<code>hugo-nuo\static\fonts</code>後再修改bundle.css</p>
+</blockquote>
 
 <h3 id="創建頁面">創建頁面</h3>
 
-<ol>
-<li><p>關於頁面：在根目錄下指令
-<code>hugo new about.md</code>
-會在content資料夾底下產生一個about.md，打開該檔案，Hugo Nuo主題的關於頁面設定方式如下：</p>
+<ul>
+<li>關於頁面：在根目錄下指令</li>
+</ul>
+
+<pre><code>hugo new about.md
+</code></pre>
+
+<p>會在content資料夾底下產生一個about.md，打開該檔案，Hugo Nuo主題的關於頁面設定方式如下：</p>
 
 <pre><code>---
 title: &quot;關於&quot;
@@ -298,16 +314,26 @@ comments: false
 ---
 </code></pre>
 
-<p>title：標題，預設為檔名
-date：日期，創建時會自動帶出
-layout：頁面布局，有<code>about</code>和<code>links</code>兩種可選
-menu：該頁面是否加入到側邊欄
-weight：權重，用來調整該頁面在側邊欄排序，和其他側邊欄顯示的項目為相對
-comments：不一定要有，調整允不允許評論</p></li>
+<p>title：標題，預設為檔名</p>
 
-<li><p>一般頁面：建議使用同一個資料夾集中管理，例如在根目錄下指令
-<code>hugo new post/welcome.md</code>
-會在content/post資料夾底下產生一個welcome.md，以這篇文章的頁面資訊為例</p>
+<p>date：日期，創建時會自動帶出</p>
+
+<p>layout：頁面布局，有<code>about</code>和<code>links</code>兩種可選</p>
+
+<p>menu：該頁面是否加入到側邊欄</p>
+
+<p>weight：權重，用來調整該頁面在側邊欄排序，和其他側邊欄顯示的項目為相對</p>
+
+<p>comments：不一定要有，調整允不允許評論</p>
+
+<ul>
+<li>一般頁面：建議使用同一個資料夾集中管理，例如在根目錄下指令</li>
+</ul>
+
+<pre><code>hugo new post/welcome.md
+</code></pre>
+
+<p>會在content/post資料夾底下產生一個welcome.md，以這篇文章的頁面資訊為例</p>
 
 <pre><code>---
 title: &quot;建置Hugo Blog&quot;
@@ -319,68 +345,88 @@ draft: false
 ---
 </code></pre>
 
-<p>cover：顯示在首頁的封面圖
-tags：此篇文章的標籤，會顯示在文章底部，在標籤頁面點選<code>Hugo</code>標籤也可找到本篇文章
-draft：是否為草稿</p></li>
-</ol>
+<p>cover：顯示在首頁的封面圖</p>
+
+<p>tags：此篇文章的標籤，會顯示在文章底部，在標籤頁面點選<code>Hugo</code>標籤也可找到本篇文章</p>
+
+<p>draft：是否為草稿</p>
 
 <p>順帶一提可在archetypes資料夾當中的default.md設定文章預設的模板，可以省下一些時間</p>
 
 <h3 id="預覽">預覽</h3>
 
-<ol>
-<li>產生靜態頁面：在根目錄下指令
-<code>hugo</code>
-會產生Blog的靜態頁面，預設放在public資料夾底下</li>
-<li>預覽：在根目錄下指令
-<code>hugo server</code>
-```
-[K25lBuilding sites … [?25h
-               | EN
-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;+&mdash;-+
-Pages            |  8
-Paginator pages  |  0
-Non-page files   |  0
-Static files     | 26
-Processed images |  0
-Aliases          |  1
-Sitemaps         |  1
-Cleaned          |  0</li>
-</ol>
+<ul>
+<li>產生靜態頁面：在根目錄下指令</li>
+</ul>
 
-<p>Total in 163 ms
-Watching for changes in D:\myHugoBlog\site{content,data,layouts,static,themes}
+<pre><code>hugo
+</code></pre>
+
+<p>會產生Blog的靜態頁面，預設放在public資料夾底下</p>
+
+<ul>
+<li>預覽：在根目錄下指令</li>
+</ul>
+
+<pre><code>hugo server
+</code></pre>
+
+<pre><code>[K25lBuilding sites … [?25h
+                   | EN
++------------------+----+
+  Pages            |  8
+  Paginator pages  |  0
+  Non-page files   |  0
+  Static files     | 26
+  Processed images |  0
+  Aliases          |  1
+  Sitemaps         |  1
+  Cleaned          |  0
+
+Total in 163 ms
+Watching for changes in D:\myHugoBlog\site\{content,data,layouts,static,themes}
 Serving pages from memory
-Running in Fast Render Mode. For full rebuilds on change: hugo server &ndash;disableFastRender
-Web Server is available at <a href="http://localhost:1313/">http://localhost:1313/</a> (bind address 127.0.0.1)
-Press Ctrl+C to stop</p>
-
-<pre><code>
-會產生靜態頁面並產生預覽內容，可以在瀏覽器經由`http://localhost:1313/`查看，且支援熱部署(livereload)，修改文章或是css之類的東西時是不用重啟的，相當方便
-![livereload](/media/posts/createHugoBlog/livereload.png)
-
-
-### 部署到Github Pages
-
-11. 首先到&lt;a href=&quot;https://github.com/&quot; target=&quot;_blank&quot;&gt;Github&lt;/a&gt;網站申請一個帳號，如果已經有帳號了可以直接跳到下一步
-12. 在首頁點選New repository，
-Repository name輸入`你的username.github.io`，比如說username為example，就輸入example.github.io，創建好之後會看到一行網址
-`https://github.com/你的username/你的username.github.io.git`，之後做部署時需要它
-13. 找一個要拿來做為本地repository的資料夾，按右鍵打開git bash，如果是第一次使用，需先設定部署時的使用者名稱及email(只要設定一次即可)
+Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
 </code></pre>
 
-<p>$ git config &ndash;global user.name &ldquo;你的username&rdquo;
-$ git config &ndash;global user.email aaa@example.com</p>
+<p>會產生靜態頁面並產生預覽內容，可以在瀏覽器經由<code>http://localhost:1313/</code>查看，且支援熱部署(livereload)，修改文章或是css之類的東西時是不用重啟的，相當方便
 
-<pre><code>14. 下指令
-`git clone https://github.com/你的username/你的username.github.io.git`
+<figure >
+    
+        <img src="https://Carrie-Lai.github.io/media/posts/createHugoBlog/livereload.png" alt="livereload" />
+    
+    
+    <figcaption>
+        <h4>livereload</h4>
+        
+    </figcaption>
+    
+</figure>
+</p>
+
+<h3 id="部署到github-pages">部署到Github Pages</h3>
+
+<ol>
+<li>首先到<a href="https://github.com/" target="_blank">Github</a>網站申請一個帳號，如果已經有帳號了可以直接跳到下一步</li>
+<li>在首頁點選New repository，
+Repository name輸入<code>你的username.github.io</code>，比如說username為example，就輸入example.github.io，創建好之後會看到一行網址
+<code>https://github.com/你的username/你的username.github.io.git</code>，之後做部署時需要它</li>
+<li>找一個要拿來做為本地repository的資料夾，按右鍵打開git bash，如果是第一次使用，需先設定部署時的使用者名稱及email(只要設定一次即可)
+<code>
+$ git config --global user.name &quot;你的username&quot;
+$ git config --global user.email aaa@example.com
+</code></li>
+<li>下指令
+<code>git clone https://github.com/你的username/你的username.github.io.git</code>
 可以看到剛剛在Github上創的Repository被拉下來了，將Blog根目錄的public資料夾內的東西都複製到Repository資料夾中，接著下以下指令，將內容部署到Github Pages
-</code></pre>
-
-<p>git add -A
-git commit -m &ldquo;輸入你要打的內容&rdquo;
+<code>
+git add -A
+git commit -m &quot;輸入你要打的內容&quot;
 git push origin master
-```</p></article>
+</code></li>
+</ol></article>
     <footer class="post-footer">
       
       <ul class="post-tags">
