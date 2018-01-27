@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>J星人的世界</title>
+    <link>https://Carrie-Lai.github.io/</link>
+    <description>Recent content on J星人的世界</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
+    <lastBuildDate>Sat, 27 Jan 2018 20:19:21 +0800</lastBuildDate>
+    
+	<atom:link href="https://Carrie-Lai.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>關於</title>
+      <link>https://Carrie-Lai.github.io/about/</link>
+      <pubDate>Sat, 27 Jan 2018 20:19:21 +0800</pubDate>
+      
+      <guid>https://Carrie-Lai.github.io/about/</guid>
+      <description> 簡介  Java Web工程師一枚
+  工業工程與管理系畢業 資策會Java班結訓 努力成長中  關於J星人的世界  記錄所學，記錄生活
+ 大事紀  2018.01.27 Hello Hugo!  使用的元素  主題：Hugo Nuo 頭像：豆助  </description>
+    </item>
+    
+    <item>
+      <title>StringUtils、CollectionUtils與BeanUtils</title>
+      <link>https://Carrie-Lai.github.io/post/threeutils/</link>
+      <pubDate>Sat, 27 Jan 2018 22:52:00 +0800</pubDate>
+      
+      <guid>https://Carrie-Lai.github.io/post/threeutils/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本文為舊站搬過來的內容，原寫於2016-12-17&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

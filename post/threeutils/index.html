@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>StringUtils、CollectionUtils與BeanUtils</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="Carrie Lai" />
+  <meta name="description" content=" 本文為舊站搬過來的內容，原寫於2016-12-17
+ 
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="StringUtils、CollectionUtils與BeanUtils" />
+    <meta name="twitter:description" content=" 本文為舊站搬過來的內容，原寫於2016-12-17
+ 
+" />
+    <meta name="twitter:image" content="https://Carrie-Lai.github.io/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="StringUtils、CollectionUtils與BeanUtils" />
+  <meta property="og:description" content=" 本文為舊站搬過來的內容，原寫於2016-12-17
+ 
+" />
+  <meta property="og:url" content="https://Carrie-Lai.github.io/post/threeutils/" />
+  <meta property="og:image" content="https://Carrie-Lai.github.io/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.34" />
+
+
+<link rel="canonical" href="https://Carrie-Lai.github.io/post/threeutils/" />
+<link rel="alternative" href="https://Carrie-Lai.github.io/index.xml" title="J星人的世界" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="wSLxwoc2zA36x4vRrmirCr0MeR1luAAvgHhtSvjbyxU" />
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="J星人的世界" />
+<meta name="msapplication-tooltip" content="J星人的世界" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://Carrie-Lai.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://Carrie-Lai.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://Carrie-Lai.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://Carrie-Lai.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://Carrie-Lai.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://Carrie-Lai.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://Carrie-Lai.github.io/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+        <a title="Go to comments" class="to-comment" href="#disqus_thread"><span class="icon icon-comment"></span></a>
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://Carrie-Lai.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">J星人的世界</h2>
+  
+  <p class="subtitle">/* A Java Programmer */</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://Carrie-Lai.github.io/">首頁</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://Carrie-Lai.github.io/tags/">標籤</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://Carrie-Lai.github.io/about/">關於</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://Carrie-Lai.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">StringUtils、CollectionUtils與BeanUtils</h1>
+      <p class="post-meta">@Carrie Lai · Jan 27, 2018 · 3 min read</p>
+    </header>
+    <article class="post-content"><blockquote>
+<p>本文為舊站搬過來的內容，原寫於2016-12-17</p>
+</blockquote>
+
+<p></p>
+
+<p>最近在工作時會研究一下前人寫的程式碼，才發現說有些開源框架提供的工具類別可以拿來用，這裡先寫寫我在專案中比較常看到的StringUtils、CollectionUtils與BeanUtils</p>
+
+<h2 id="apache-commons">Apache Commons</h2>
+
+<p>在開始之前來看看<a href="https://commons.apache.org/" target="_blank">Apache Commons</a>，它是Apache的一個專案，提供可重用的、開源的Java程式碼，分成Proper、Sandbox和Dormant三個部分，我們主要在用的是Proper底下的組件，差不多有四十種左右可以自由使用，例如：</p>
+
+<table>
+<thead>
+<tr>
+<th>組件</th>
+<th>說明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://commons.apache.org/proper/commons-beanutils/" target="_blank">BeanUtils</a></td>
+<td>針對Bean的包裝和各種操作</td>
+</tr>
+
+<tr>
+<td><a href="https://commons.apache.org/proper/commons-collections/" target="_blank">Collections</a></td>
+<td>對Java的Collection做加強</td>
+</tr>
+
+<tr>
+<td><a href="https://commons.apache.org/proper/commons-lang" target="_blank">Lang</a></td>
+<td>讓java.lang套件中的類別增加更多功能</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="stringutils">StringUtils</h2>
+
+<p>StringUtils是<a href="https://commons.apache.org/proper/commons-lang/javadocs/api-3.5/index.html" target="_blank">Apache Commons Lang</a>當中的類別(
+org.apache.commons.lang3.StringUtils)，所以使用前需要先加入Apache Commons Lang的jar檔，如果用maven的話可以用加入dependency的方式，目前的最新版本是3.5，Apache Commons Lang除了StringUtils以外還有像ArrayUtils、andomStringUtils、Tokenizer、WordUtils之類的工具類別</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+  <span style="color:#f92672">&lt;groupId&gt;</span>org.apache.commons<span style="color:#f92672">&lt;/groupId&gt;</span>
+  <span style="color:#f92672">&lt;artifactId&gt;</span>commons-lang3<span style="color:#f92672">&lt;/artifactId&gt;</span>
+  <span style="color:#f92672">&lt;version&gt;</span>3.5<span style="color:#f92672">&lt;/version&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span></code></pre></div>
+<p>StringUtils類別的方法都是<strong>null safe</strong>的，也就是說就算遇到傳進來的String是Null，也不會有NullPointerException出現，我比較常用到的方法大概有幾個：</p>
+
+<ul>
+<li><p><strong>IsEmpty/IsBlank</strong>
+判斷字串有沒有內容，差別在於字串如果是&rdquo; &ldquo;(空格)的話，isEmpty()會回傳false，isBlank()則會回傳true</p></li>
+
+<li><p><strong>Trim/Strip</strong>
+去掉字串前後的空格，Strip除了空格以外，也可以指定其他要去除的字元。trimToEmpty()跟trimToNull()的差別在於前者trim完之後如果字串是null或空字串，則一律回傳空字串，後者則是都回傳null</p></li>
+
+<li><p><strong>Equals/Compare</strong>
+字串間的比較，就算拿來比較的兩個字串都是null也可以比，equals()方法的兩個參數如果都是null會回傳true，而compare()則會回傳0</p></li>
+
+<li><p><strong>LeftPad/RightPad</strong>
+將某個字串的長度增加到某個值，多出來的部分補上特定的字，例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String test1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;測試&#34;</span><span style="color:#f92672">;</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>StringUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">rightPad</span><span style="color:#f92672">(</span>test1<span style="color:#f92672">,</span> 10<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">));</span>   <span style="color:#f92672">//</span>測試aaaaaaaa</code></pre></div></li>
+</ul>
+
+<h2 id="collectionutils">CollectionUtils</h2>
+
+<p>CollectionUtils是<a href="https://commons.apache.org/proper/commons-collections/javadocs/api-release/index.html" target="_blank">Apache Commons Collections</a>當中的類別(org.apache.commons.collections4.CollectionUtils)，使用前也是要加入jar檔，目前最新版本是4.1</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>org.apache.commons<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>commons-collections4<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;version&gt;</span>4.1<span style="color:#f92672">&lt;/version&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span></code></pre></div>
+<p>CollectionUtils我比較常用的就是isEmpty()跟isNotEmpty()這兩個</p>
+
+<p>之前可能要這麼寫：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> testList <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>testList <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> testList<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">&gt;</span> 0 <span style="color:#f92672">);</span> <span style="color:#f92672">//</span><span style="color:#66d9ef">false</span></code></pre></div>
+<p>使用CollectionUtils.isNotEmpty()：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> testList <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>CollectionUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">isNotEmpty</span><span style="color:#f92672">(</span>testList<span style="color:#f92672">));</span> <span style="color:#f92672">//</span><span style="color:#66d9ef">false</span></code></pre></div>
+<h2 id="beanutils">BeanUtils</h2>
+
+<p>BeanUtils是<a href="http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.3/apidocs/index.html" target="_blank">Apache Commons BeanUtils</a>當中的類別(org.apache.commons.beanutils.BeanUtils)，目前Apache Commons BeanUtils的最新版本是1.9.3</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>commons-beanutils<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>commons-beanutils<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;version&gt;</span>1.9.3<span style="color:#f92672">&lt;/version&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span></code></pre></div>
+<p>不過我所接觸到的專案所使用的BeanUtils是<a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/BeanUtils.html" target="_blank">Spring</a>的(org.springframework.beans.BeanUtils)，其實除了Apache、Spring以外，還有其他開源框架也有提供類似功能的類別，各具特色，但都有Bean屬性複製的方法，只是實作的方式不盡相同(例：Apache、Spring使用反射機制，cglib使用動態代理&hellip;)，效能上會有所差別，可以參考<a href="http://www.cnblogs.com/kaka/archive/2013/03/06/2945514.html" target="_blank">Bean复制的几种框架性能比较（Apache BeanUtils、PropertyUtils,Spring BeanUtils,Cglib BeanCopier）</a>這篇文章</p>
+
+<p>假設先定義兩個JavaBean</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmpVO</span> <span style="color:#66d9ef">implements</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">io</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Serializable</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> Integer empno<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> String ename<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> String job<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> Date hiredate<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> Double sal<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> Double comm<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> DeptVO deptVO<span style="color:#f92672">;</span>
+    
+    <span style="color:#75715e">//省略getter/setter
+</span><span style="color:#75715e"></span><span style="color:#f92672">}</span></code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyEmpVO</span> <span style="color:#66d9ef">extends</span> EmpVO <span style="color:#66d9ef">implements</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">io</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Serializable</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String addr<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> String phone<span style="color:#f92672">;</span>
+    
+    <span style="color:#75715e">//省略getter/setter
+</span><span style="color:#75715e"></span><span style="color:#f92672">}</span></code></pre></div>
+<p>另外定義一個有同名但型態不同的Java Bean</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DifferentEmpVO</span> <span style="color:#66d9ef">implements</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">io</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Serializable</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> Integer empno<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> String ename<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> String job<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> String hiredate<span style="color:#f92672">;</span> <span style="color:#75715e">//型態不同
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> String address<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> String phone<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> Integer sal<span style="color:#f92672">;</span> <span style="color:#75715e">//型態不同
+</span><span style="color:#75715e"></span>
+    <span style="color:#75715e">//省略getter/setter
+</span><span style="color:#75715e"></span><span style="color:#f92672">}</span></code></pre></div>
+<h3 id="org-apache-commons-beanutils-beanutils">org.apache.commons.beanutils.BeanUtils</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">//將orig的屬性複製到dest中
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">copyProperties</span><span style="color:#f92672">(</span>Object dest<span style="color:#f92672">,</span> Object orig<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IllegalAccessException<span style="color:#f92672">,</span> InvocationTargetException</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">//將beanA的某個屬性值複製到beanB
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">copyProperty</span><span style="color:#f92672">(</span>Object bean<span style="color:#f92672">,</span> String name<span style="color:#f92672">,</span> Object value<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IllegalAccessException<span style="color:#f92672">,</span> InvocationTargetException</code></pre></div>
+<p>例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    EmpVO emp1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EmpVO<span style="color:#f92672">();</span>
+    emp1<span style="color:#f92672">.</span><span style="color:#a6e22e">setEmpno</span><span style="color:#f92672">(</span>1001<span style="color:#f92672">);</span>
+    emp1<span style="color:#f92672">.</span><span style="color:#a6e22e">setEname</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Carrie&#34;</span><span style="color:#f92672">);</span>
+    emp1<span style="color:#f92672">.</span><span style="color:#a6e22e">setHiredate</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> java<span style="color:#f92672">.</span><span style="color:#a6e22e">sql</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Date</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Date<span style="color:#f92672">().</span><span style="color:#a6e22e">getTime</span><span style="color:#f92672">()));</span>
+    emp1<span style="color:#f92672">.</span><span style="color:#a6e22e">setJob</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Manager&#34;</span><span style="color:#f92672">);</span>
+    emp1<span style="color:#f92672">.</span><span style="color:#a6e22e">setSal</span><span style="color:#f92672">(</span>50000D<span style="color:#f92672">);</span>
+    emp1<span style="color:#f92672">.</span><span style="color:#a6e22e">setComm</span><span style="color:#f92672">(</span>200D<span style="color:#f92672">);</span>
+    DeptVO dept <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DeptVO<span style="color:#f92672">();</span>
+    emp1<span style="color:#f92672">.</span><span style="color:#a6e22e">setDeptVO</span><span style="color:#f92672">(</span>dept<span style="color:#f92672">);</span>
+    dept<span style="color:#f92672">.</span><span style="color:#a6e22e">setDeptno</span><span style="color:#f92672">(</span>10<span style="color:#f92672">);</span>
+    dept<span style="color:#f92672">.</span><span style="color:#a6e22e">setDname</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;業務部&#34;</span><span style="color:#f92672">);</span>
+    dept<span style="color:#f92672">.</span><span style="color:#a6e22e">setLoc</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;台北市&#34;</span><span style="color:#f92672">);</span>
+
+    MyEmpVO emp2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyEmpVO<span style="color:#f92672">();</span>
+    MyEmpVO emp3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyEmpVO<span style="color:#f92672">();</span>
+    DifferentEmpVO emp4 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DifferentEmpVO<span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+        BeanUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">copyProperties</span><span style="color:#f92672">(</span>emp2<span style="color:#f92672">,</span> emp1<span style="color:#f92672">);</span>
+        dept<span style="color:#f92672">.</span><span style="color:#a6e22e">setLoc</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;高雄市&#34;</span><span style="color:#f92672">);</span> <span style="color:#75715e">//會修改兩個Bean所參考的物件
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>emp2<span style="color:#f92672">);</span>
+
+        BeanUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">copyProperty</span><span style="color:#f92672">(</span>emp3<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ename&#34;</span><span style="color:#f92672">,</span> emp1<span style="color:#f92672">.</span><span style="color:#a6e22e">getEname</span><span style="color:#f92672">());</span> <span style="color:#75715e">//只複製ename
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>emp3<span style="color:#f92672">);</span>
+
+        BeanUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">copyProperties</span><span style="color:#f92672">(</span>emp4<span style="color:#f92672">,</span> emp1<span style="color:#f92672">);</span> <span style="color:#75715e">//有同名但型態不同的屬性
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>emp4<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IllegalAccessException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InvocationTargetException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<pre><code>empno=1001,ename=Carrie,job=Manager,hiredate=2016-12-18,comm=200.0,sal=50000.0,deptno=10,dname=業務部,loc=高雄市,address=null,phone=null
+empno=null,ename=Carrie,job=null,hiredate=null,comm=null,sal=null,address=null,phone=null
+empno=1001,ename=Carrie,job=Manager,hiredate=2016-12-20,sal=50000,address=null,phone=null
+</code></pre>
+
+<ul>
+<li>效能似乎是幾種方式當中最差的一種(可能是它在背後做太多事了，這樣也容易有某些問題發生)</li>
+<li>當遇到同名屬性但型態不同時會做基本的轉型</li>
+<li>某些型態需要再額外註冊Converter否則在值為null時會出錯
+
+<ul>
+<li>雖然網路上是這樣講，但我一直試不出來，不知道是不是新的版本有做修正</li>
+</ul></li>
+</ul>
+
+<h3 id="org-apache-commons-beanutils-propertyutils">org.apache.commons.beanutils.PropertyUtils</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">copyProperties</span><span style="color:#f92672">(</span>Object dest<span style="color:#f92672">,</span> Object orig<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IllegalAccessException<span style="color:#f92672">,</span> InvocationTargetException<span style="color:#f92672">,</span> NoSuchMethodException</code></pre></div>
+<p>例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">        MyEmpVO emp5 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyEmpVO<span style="color:#f92672">();</span>
+        DifferentEmpVO emp6 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DifferentEmpVO<span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                PropertyUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">copyProperties</span><span style="color:#f92672">(</span>emp5<span style="color:#f92672">,</span> emp1<span style="color:#f92672">);</span>
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>emp5<span style="color:#f92672">);</span>
+
+                PropertyUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">copyProperties</span><span style="color:#f92672">(</span>emp6<span style="color:#f92672">,</span> emp1<span style="color:#f92672">);</span>   <span style="color:#75715e">// 出現例外錯誤
+</span><span style="color:#75715e"></span>                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>emp6<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IllegalAccessException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InvocationTargetException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>NoSuchMethodException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span></code></pre></div>
+<pre><code>empno=1001,ename=Carrie,job=Manager,hiredate=2016-12-20,comm=200.0,sal=50000.0,deptno=10,dname=業務部,loc=台北市,address=null,phone=null
+
+java.lang.IllegalArgumentException: Cannot invoke com.emp.model.DifferentEmpVO.setHiredate on bean class 'class com.emp.model.DifferentEmpVO' - argument type mismatch - had objects of type &quot;java.sql.Date&quot; but expected signature &quot;java.lang.String&quot;
+</code></pre>
+
+<ul>
+<li>當遇到同名屬性但型態不同時會出現例外錯誤(argument type mismatch)</li>
+<li>沒辦法自定Converter</li>
+</ul>
+
+<h3 id="org-springframework-beans-beanutils">org.springframework.beans.BeanUtils</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">//把source的屬性複製給target
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">copyProperties</span><span style="color:#f92672">(</span>Object source<span style="color:#f92672">,</span> Object target<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> BeansException</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">//把source的屬性複製給target，但要忽略掉ignoreProperties所列的屬性
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">copyProperties</span><span style="color:#f92672">(</span>Object source<span style="color:#f92672">,</span> Object target<span style="color:#f92672">,</span> String<span style="color:#f92672">...</span> ignoreProperties<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> BeansException</code></pre></div>
+<p>例如：
+複製全部屬性</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">        MyEmpVO emp7 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyEmpVO<span style="color:#f92672">();</span>
+        BeanUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">copyProperties</span><span style="color:#f92672">(</span>emp1<span style="color:#f92672">,</span> emp7<span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>emp7<span style="color:#f92672">);</span></code></pre></div>
+<pre><code>empno=1001,ename=Carrie,job=Manager,hiredate=2016-12-20,comm=200.0,sal=50000.0,deptno=10,dname=業務部,loc=台北市,address=null,phone=null
+</code></pre>
+
+<p>忽略部份屬性</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">        MyEmpVO emp8 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyEmpVO<span style="color:#f92672">();</span>
+        String<span style="color:#f92672">[]</span> ignoreProperties <span style="color:#f92672">=</span> <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;ename&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;empno&#34;</span><span style="color:#f92672">};</span> <span style="color:#75715e">//忽略ename跟empno
+</span><span style="color:#75715e"></span>        BeanUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">copyProperties</span><span style="color:#f92672">(</span>emp1<span style="color:#f92672">,</span> emp8<span style="color:#f92672">,</span> ignoreProperties<span style="color:#f92672">);</span> 
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>emp8<span style="color:#f92672">);</span></code></pre></div>
+<pre><code>empno=null,ename=null,job=Manager,hiredate=2016-12-20,comm=200.0,sal=50000.0,deptno=10,dname=業務部,loc=台北市,address=null,phone=null
+</code></pre>
+
+<p>遇到同名但不同型態的屬性</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">        MyEmpVO1 emp9 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyEmpVO1<span style="color:#f92672">();</span>
+        BeanUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">copyProperties</span><span style="color:#f92672">(</span>emp1<span style="color:#f92672">,</span> emp9<span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>emp9<span style="color:#f92672">);</span></code></pre></div>
+<pre><code> org.springframework.beans.FatalBeanException: Could not copy properties from source to target; nested exception is java.lang.IllegalArgumentException: argument type mismatch
+</code></pre>
+
+<ul>
+<li>當遇到同名屬性但型態不同時會出現例外錯誤(argument type mismatch)</li>
+</ul>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+<li><a href="http://www.codeceo.com/article/apache-commons-tools.html" target="_blank">Apache Commons 工具集使用简介</a></li>
+<li><a href="http://www.cnblogs.com/ITtangtang/p/3966955.html" target="_blank">编写更少量的代码：使用apache commons工具类库</a></li>
+<li><a href="https://segmentfault.com/a/1190000007366008" target="_blank">BeanUtils工具使用细节</a></li>
+<li><a href="http://www.cnblogs.com/wardensky/p/4716981.html" target="_blank">Spring中的BeanUtils与apache commons中的BeanUtils用法</a></li>
+<li><a href="http://www.cnblogs.com/cangqiongbingchen/p/5810355.html" target="_blank">BeanUtils.copyProperties VS PropertyUtils.copyProperties</a></li>
+<li><a href="http://bylijinnan.iteye.com/blog/2224808" target="_blank">BeanUtils.copyProperties使用笔记</a></li>
+<li><a href="http://jingpin.jikexueyuan.com/article/13706.html" target="_blank">Spring 中的BeanUtils与apache中的BeanUtils用法与比较</a></li>
+<li><a href="http://woshixy.blog.51cto.com/5637578/961036" target="_blank">Spring中BeanUtils.copyProperties方法测试</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_49742bac0101ffg5.html" target="_blank">Apache BeanUtils &amp; PropertyUtils和spring Beanutils区别</a></li>
+<li><a href="http://blog.csdn.net/victor_cindy1/article/details/52450278" target="_blank">Spring BeanUtils.copyProperties和apache commons-beanutils</a></li>
+</ul></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://Carrie-Lai.github.io/tags/java"><span class="tag">Java</span></a></li>
+        
+          <li><a href="https://Carrie-Lai.github.io/tags/apache"><span class="tag">Apache</span></a></li>
+        
+          <li><a href="https://Carrie-Lai.github.io/tags/spring"><span class="tag">Spring</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.
+      </p>
+    </footer>
+    
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ahjiong" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 J星人的世界</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://Carrie-Lai.github.io/js/bundle.js"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-40443654-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+  </body>
+</html>
