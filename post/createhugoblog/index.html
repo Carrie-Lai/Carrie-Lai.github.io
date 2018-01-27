@@ -258,11 +258,9 @@
 
 <h3 id="安裝hugo">安裝Hugo</h3>
 
-<ol>
-<li>到<a href="https://github.com/gohugoio/hugo/releases" target="_blank">官網提供的下載點</a>根據自己的作業系統下載對應的安裝包，我使用的64位元的Windows，所以下載<code>hugo_0.34_Windows-64bit.zip</code>(目前最新版本為0.34)</li>
-<li>將下載回來的zip解壓縮，資料夾裡面會有三個檔案，最重要的是hugo.exe，將該資料夾的路徑加到環境變數的path中</li>
-<li>在cmd下指令</li>
-</ol>
+<p>1.到<a href="https://github.com/gohugoio/hugo/releases" target="_blank">官網提供的下載點</a>根據自己的作業系統下載對應的安裝包，我使用的64位元的Windows，所以下載<code>hugo_0.34_Windows-64bit.zip</code>(目前最新版本為0.34)
+2.將下載回來的zip解壓縮，資料夾裡面會有三個檔案，最重要的是hugo.exe，將該資料夾的路徑加到環境變數的path中
+3.在cmd下指令</p>
 
 <pre><code>hugo version
 </code></pre>
@@ -271,23 +269,21 @@
 
 <h3 id="初始化blog及安裝主題">初始化Blog及安裝主題</h3>
 
-<ol>
-<li>找個地方當做是要存放Blog的資料夾，下指令</li>
-</ol>
+<p>4.找個地方當做是要存放Blog的資料夾，下指令</p>
 
 <pre><code>hugo new site 目標資料夾路徑
 </code></pre>
 
 <p>成功的話就會在底下出現一堆訊息，原本空白的資料夾也會多了一些東西出來
 <img src="https://Carrie-Lai.github.io/media/posts/createHugoBlog/install.png" alt="" />
-5. Hugo有許多<a href="https://themes.gohugo.io/" target="_blank">主題</a>可以選擇，選擇一個自己看得順眼的主題，將其clone到themes資料夾底下，例如我選的是<a href="https://github.com/laozhu/hugo-nuo" target="_blank">Hugo Nuo</a>這個主題，先在cmd移動到themes資料夾，接著下指令</p>
+5.Hugo有許多<a href="https://themes.gohugo.io/" target="_blank">主題</a>可以選擇，選擇一個自己看得順眼的主題，將其clone到themes資料夾底下，例如我選的是<a href="https://github.com/laozhu/hugo-nuo" target="_blank">Hugo Nuo</a>這個主題，先在cmd移動到themes資料夾，接著下指令</p>
 
 <pre><code>git clone https://github.com/laozhu/hugo-nuo
 </code></pre>
 
 <p>成功的話就會看到有資料夾生出來了
 <img src="https://Carrie-Lai.github.io/media/posts/createHugoBlog/theme.png" alt="" />
-6. 每個主題有不同的值可以設定，但都是在根目錄底下的<code>config.toml</code>做設定，主題的說明文件上應該都會說明設定方式，一般在這邊可能會花上比較多時間，以Hugo Nuo這個主題來說，我將<code>hugo-nuo\static\img</code>底下的圖片替換掉，此外透過<code>hugo-nuo\static\css\bundle.css</code>修改側邊欄的字型、頭像屬性還有文章超連結的顏色(bundle.css的內容是壓縮過的，原始碼可在<code>hugo-nuo\src\styles\partials</code>底下找到，方便對照)</p>
+6.每個主題有不同的值可以設定，但都是在根目錄底下的<code>config.toml</code>做設定，主題的說明文件上應該都會說明設定方式，一般在這邊可能會花上比較多時間，以Hugo Nuo這個主題來說，我將<code>hugo-nuo\static\img</code>底下的圖片替換掉，此外透過<code>hugo-nuo\static\css\bundle.css</code>修改側邊欄的字型、頭像屬性還有文章超連結的顏色(bundle.css的內容是壓縮過的，原始碼可在<code>hugo-nuo\src\styles\partials</code>底下找到，方便對照)</p>
 
 <blockquote>
 <p>字型可在<a href="https://fonts.google.com/" target="_blank">Google Fonts</a>找自己喜歡的下載下來放到<code>hugo-nuo\static\fonts</code>後再修改bundle.css</p>
@@ -408,21 +404,17 @@ Press Ctrl+C to stop
 
 <h3 id="部署到github-pages">部署到Github Pages</h3>
 
-<ol>
-<li>首先到<a href="https://github.com/" target="_blank">Github</a>網站申請一個帳號，如果已經有帳號了可以直接跳到下一步</li>
-<li>在首頁點選New repository，
+<p>7.首先到<a href="https://github.com/" target="_blank">Github</a>網站申請一個帳號，如果已經有帳號了可以直接跳到下一步
+8.在首頁點選New repository，
 Repository name輸入<code>你的username.github.io</code>，比如說username為example，就輸入example.github.io，創建好之後會看到一行網址
-<code>https://github.com/你的username/你的username.github.io.git</code>，之後做部署時需要它</li>
-<li>找一個要拿來做為本地repository的資料夾，按右鍵打開git bash，如果是第一次使用，需先設定部署時的使用者名稱及email(只要設定一次即可)</li>
-</ol>
+<code>https://github.com/你的username/你的username.github.io.git</code>，之後做部署時需要它
+9.找一個要拿來做為本地repository的資料夾，按右鍵打開git bash，如果是第一次使用，需先設定部署時的使用者名稱及email(只要設定一次即可)</p>
 
 <pre><code>$ git config --global user.name &quot;你的username&quot;
 $ git config --global user.email aaa@example.com
 </code></pre>
 
-<ol>
-<li>下指令</li>
-</ol>
+<p>10.下指令</p>
 
 <pre><code>git clone https://github.com/你的username/你的username.github.io.git
 </code></pre>
