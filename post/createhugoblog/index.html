@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
 
   
-  <title>建置Hugo Blog</title>
+  <title>使用Hugo&#43;Github Pages建置Blog</title>
 
   
   
@@ -24,7 +24,7 @@
   
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@gohugoio" />
-    <meta name="twitter:title" content="建置Hugo Blog" />
+    <meta name="twitter:title" content="使用Hugo&#43;Github Pages建置Blog" />
     <meta name="twitter:description" content="花了一個晚上在弄Hugo的環境，得把過程記下來避免之後忘記
 
 " />
@@ -33,7 +33,7 @@
 
   
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="建置Hugo Blog" />
+  <meta property="og:title" content="使用Hugo&#43;Github Pages建置Blog" />
   <meta property="og:description" content="花了一個晚上在弄Hugo的環境，得把過程記下來避免之後忘記
 
 " />
@@ -85,6 +85,9 @@
 
 <link rel="stylesheet" href="https://Carrie-Lai.github.io/css/bundle.css" />
 
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
 
   
   <!--[if lt IE 9]>
@@ -214,8 +217,12 @@
 
   <section class="main post-detail">
     <header class="post-header">
-      <h1 class="post-title">建置Hugo Blog</h1>
-      <p class="post-meta">@Carrie Lai · Jan 28, 2018 · 2 min read</p>
+      <h1 class="post-title">使用Hugo&#43;Github Pages建置Blog</h1>
+      <p class="post-meta">@Carrie Lai · Jan 28, 2018 · 2 min read
+        <span id="busuanzi_container_page_pv">
+          · 本文總閱讀數<span id="busuanzi_value_page_pv"></span>次
+        </span>
+      </p>
     </header>
     <article class="post-content"><p>花了一個晚上在弄Hugo的環境，得把過程記下來避免之後忘記</p>
 
@@ -225,13 +232,13 @@
 
 <h2 id="為何選擇hugo">為何選擇Hugo？</h2>
 
-<p>其實我本來沒有寫Blog的習慣，以前申請過像Pixnet、Blogspot之類的，也都寫沒幾篇文章就荒廢在那邊了，但從在資策會上課開始，一直到現在工作了一陣子，總感覺好像有需要把自己在寫程式時學到的一些東西記錄下來，於是開始找尋適合落腳的Blog，一開始是使用Hexo+Github Pages，覺得弄起來好麻煩，需要安裝許多插件(今天爬文時也看到不少人說隨著內容越來越多，效能明顯變慢，所以更回不去了)，後來有考慮過Medium、簡書等平台，但感覺台灣的使用者沒有很多，加上後者經常發生原創文章被抄襲的情況，所以也都捨棄。</p>
+<p>其實我本來沒有寫Blog的習慣，以前申請過像Pixnet、Blogspot之類的，也都寫沒幾篇文章就荒廢在那邊了，但從在資策會上課開始，一直到現在工作了一陣子，總感覺好像有需要把自己在寫程式時學到的一些東西記錄下來，於是開始找尋適合落腳的Blog，一開始是使用Hexo+Github Pages，覺得弄起來好麻煩，需要安裝許多插件(今天爬文時也看到不少人說隨著內容越來越多，效能明顯變慢，所以更回不去了)，後來有考慮過Medium、簡書等平台，但感覺台灣的使用者沒有很多，加上後者經常發生原創文章被抄襲的情況，所以也都捨棄</p>
 
-<p>無意中發現了還可以利用Hugo在Github Pages上建置Blog，比起Hexo簡單不少，而且效能也好，跟Hexo一樣是使用<a href="http://markdown.tw/" target="_blank">Markdown</a>來撰寫文章，非常適合程式設計師使用。</p>
+<p>無意中發現了還可以利用Hugo在Github Pages上建置Blog，比起Hexo簡單不少，而且效能也好，跟Hexo一樣是使用<a href="http://markdown.tw/" target="_blank">Markdown</a>來撰寫文章，非常適合程式設計師使用</p>
 
 <h2 id="關於hugo">關於Hugo</h2>
 
-<p>Hugo本身是使用Go語言編寫，可以讓使用者快速建置一個靜態Blog</p>
+<p>Hugo本身是使用Go語言編寫，可以讓使用者快速建置一個靜態網站</p>
 
 <ul>
 <li><a href="http://gohugo.io/" target="_blank">官網</a></li>
@@ -265,10 +272,7 @@
 
 <li><p>在cmd下指令</p></li>
 </ul>
-
-<pre><code>hugo version
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo version</code></pre></div>
 <p>如果出現類似Hugo Static Site Generator v0.34 windows/amd64 BuildDate: 2018-01-22T12:07:11Z這樣的訊息就代表安裝成功</p>
 
 <h3 id="初始化blog及安裝主題">初始化Blog及安裝主題</h3>
@@ -276,21 +280,15 @@
 <ul>
 <li>找個地方當做是要存放Blog的資料夾，下指令</li>
 </ul>
-
-<pre><code>hugo new site 目標資料夾路徑
-</code></pre>
-
-<p>成功的話就會在底下出現一堆訊息，原本空白的資料夾也會多了一些東西出來</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new site 目標資料夾路徑</code></pre></div>
+<p>成功的話就會在底下出現一堆訊息，原本空白的資料夾也會多了一些東西出來，該資料夾可以視為根目錄</p>
 
 <p><img src="https://Carrie-Lai.github.io/media/posts/createHugoBlog/install.png" alt="" /></p>
 
 <ul>
 <li>Hugo有許多<a href="https://themes.gohugo.io/" target="_blank">主題</a>可以選擇，選擇一個自己看得順眼的主題，將其clone到themes資料夾底下，例如我選的是<a href="https://github.com/laozhu/hugo-nuo" target="_blank">Hugo Nuo</a>這個主題，先在cmd移動到themes資料夾，接著下指令</li>
 </ul>
-
-<pre><code>git clone https://github.com/laozhu/hugo-nuo
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/laozhu/hugo-nuo</code></pre></div>
 <p>成功的話就會看到有資料夾生出來了</p>
 
 <p><img src="https://Carrie-Lai.github.io/media/posts/createHugoBlog/theme.png" alt="" /></p>
@@ -300,7 +298,7 @@
 </ul>
 
 <blockquote>
-<p>字型可在<a href="https://fonts.google.com/" target="_blank">Google Fonts</a>找自己喜歡的下載下來放到<code>hugo-nuo\static\fonts</code>後再修改bundle.css</p>
+<p>字型可在<a href="https://fonts.google.com/" target="_blank">Google Fonts</a>找自己喜歡的下載下來放到<code>hugo-nuo\static\fonts</code>後再修改bundle.css，比如我選用的是Inconsolata字型</p>
 </blockquote>
 
 <h3 id="創建頁面">創建頁面</h3>
@@ -308,22 +306,16 @@
 <ul>
 <li>關於頁面：在根目錄下指令</li>
 </ul>
-
-<pre><code>hugo new about.md
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new about.md</code></pre></div>
 <p>會在content資料夾底下產生一個about.md，打開該檔案，Hugo Nuo主題的關於頁面設定方式如下：</p>
-
-<pre><code>---
-title: &quot;關於&quot;
-date: 2018-01-27T20:19:21+08:00
-layout: &quot;about&quot;
-menu: &quot;main&quot;
-weight: 50
-comments: false
----
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+title: <span style="color:#e6db74">&#34;關於&#34;</span>
+date: <span style="color:#e6db74">2018-01-27T20:19:21</span>+<span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">00</span>
+layout: <span style="color:#e6db74">&#34;about&#34;</span>
+menu: <span style="color:#e6db74">&#34;main&#34;</span>
+weight: <span style="color:#ae81ff">50</span>
+comments: <span style="color:#66d9ef">false</span>
+---</code></pre></div>
 <p>title：標題，預設為檔名</p>
 
 <p>date：日期，創建時會自動帶出</p>
@@ -339,68 +331,53 @@ comments: false
 <ul>
 <li>一般頁面：建議使用同一個資料夾集中管理，例如在根目錄下指令</li>
 </ul>
-
-<pre><code>hugo new post/welcome.md
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new post/welcome.md</code></pre></div>
 <p>會在content/post資料夾底下產生一個welcome.md，以這篇文章的頁面資訊為例</p>
-
-<pre><code>---
-title: &quot;建置Hugo Blog&quot;
-author: &quot;Carrie Lai&quot;
-cover: &quot;/media/posts/createHugoBlog/hugo01.png&quot;
-date: 2018-01-28T00:09:10+08:00
-tags: [&quot;Hugo&quot;]
-draft: false
----
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+title: <span style="color:#e6db74">&#34;建置Hugo Blog&#34;</span>
+author: <span style="color:#e6db74">&#34;Carrie Lai&#34;</span>
+cover: <span style="color:#e6db74">&#34;/media/posts/createHugoBlog/hugo01.png&#34;</span>
+date: <span style="color:#e6db74">2018-01-28T00:09:10</span>+<span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">00</span>
+tags: [<span style="color:#e6db74">&#34;Hugo&#34;</span>]
+draft: <span style="color:#66d9ef">false</span>
+---</code></pre></div>
 <p>cover：顯示在首頁的封面圖</p>
 
 <p>tags：此篇文章的標籤，會顯示在文章底部，在標籤頁面點選<code>Hugo</code>標籤也可找到本篇文章</p>
 
 <p>draft：是否為草稿</p>
 
-<p>順帶一提可在archetypes資料夾當中的default.md設定文章預設的模板，可以省下一些時間</p>
+<p>順帶一提可在archetypes資料夾當中的default.md設定文章預設的模板，建立新文章的時候就會套用這個模板，可以省下一些時間</p>
 
 <h3 id="預覽">預覽</h3>
 
 <ul>
 <li>產生靜態頁面：在根目錄下指令</li>
 </ul>
-
-<pre><code>hugo
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo</code></pre></div>
 <p>會產生Blog的靜態頁面，預設放在public資料夾底下</p>
 
 <ul>
 <li>預覽：在根目錄下指令</li>
 </ul>
-
-<pre><code>hugo server
-</code></pre>
-
-<pre><code>[K25lBuilding sites … [?25h
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo server</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>K25lBuilding sites … <span style="color:#f92672">[</span>?25h
                    | EN
 +------------------+----+
-  Pages            |  8
-  Paginator pages  |  0
-  Non-page files   |  0
-  Static files     | 26
-  Processed images |  0
-  Aliases          |  1
-  Sitemaps         |  1
-  Cleaned          |  0
+  Pages            |  <span style="color:#ae81ff">8</span>
+  Paginator pages  |  <span style="color:#ae81ff">0</span>
+  Non-page files   |  <span style="color:#ae81ff">0</span>
+  Static files     | <span style="color:#ae81ff">26</span>
+  Processed images |  <span style="color:#ae81ff">0</span>
+  Aliases          |  <span style="color:#ae81ff">1</span>
+  Sitemaps         |  <span style="color:#ae81ff">1</span>
+  Cleaned          |  <span style="color:#ae81ff">0</span>
 
-Total in 163 ms
-Watching for changes in D:\myHugoBlog\site\{content,data,layouts,static,themes}
+Total in <span style="color:#ae81ff">163</span> ms
+Watching <span style="color:#66d9ef">for</span> changes in D:<span style="color:#ae81ff">\m</span>yHugoBlog<span style="color:#ae81ff">\s</span>ite<span style="color:#ae81ff">\{</span>content,data,layouts,static,themes<span style="color:#f92672">}</span>
 Serving pages from memory
 Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
-Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
-Press Ctrl+C to stop
-</code></pre>
-
+Web Server is available at http://localhost:1313/ <span style="color:#f92672">(</span>bind address <span style="color:#ae81ff">127</span>.0.0.1<span style="color:#f92672">)</span>
+Press Ctrl+C to stop</code></pre></div>
 <p>會產生靜態頁面並產生預覽內容，可以在瀏覽器經由<code>http://localhost:1313/</code>查看，且支援熱部署(livereload)，修改文章或是css之類的東西時是不用重啟的，相當方便
 
 <figure >
@@ -427,24 +404,46 @@ Repository name輸入<code>你的username.github.io</code>，比如說username�
 
 <li><p>找一個要拿來做為本地repository的資料夾，按右鍵打開git bash，如果是第一次使用，需先設定部署時的使用者名稱及email(只要設定一次即可)</p></li>
 </ul>
-
-<pre><code>$ git config --global user.name &quot;你的username&quot;
-$ git config --global user.email aaa@example.com
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git config --global user.name <span style="color:#e6db74">&#34;你的username&#34;</span>
+git config --global user.email aaa@example.com</code></pre></div>
 <ul>
 <li>下指令</li>
 </ul>
-
-<pre><code>git clone https://github.com/你的username/你的username.github.io.git
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/你的username/你的username.github.io.git</code></pre></div>
 <p>可以看到剛剛在Github上創的Repository被拉下來了，將Blog根目錄的public資料夾內的東西都複製到Repository資料夾中，接著下以下指令，將內容部署到Github Pages</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git add -A
+git commit -m <span style="color:#e6db74">&#34;輸入你要打的內容&#34;</span>
+git push origin master</code></pre></div>
+<h3 id="額外設定">額外設定</h3>
 
-<pre><code>git add -A
-git commit -m &quot;輸入你要打的內容&quot;
-git push origin master
-</code></pre></article>
+<ul>
+<li>Google Analytics</li>
+</ul>
+
+<p>可以到<a href="https://www.google.com/analytics" target="_blank">Google Analytics</a>去新建資源並取得追蹤編號，設定到根目錄的config.toml當中</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#75715e"># Google Analytics UA number</span>
+<span style="color:#a6e22e">googleAnalytics</span> = <span style="color:#e6db74">&#34;UA-XXXXXX-X&#34;</span></code></pre></div>
+<ul>
+<li>不蒜子</li>
+</ul>
+
+<p>如果要在文章或Blog本身加入訪客數的統計，可以用用看<a href="http://ibruce.info/2015/04/04/busuanzi/" target="_blank">不蒜子</a>，設定方式可以參考<a href="https://wwcreator.github.io/2017/02/21/hugo-%E6%B7%BB%E5%8A%A0%E7%AB%99%E7%82%B9%E7%BB%9F%E8%AE%A1%E4%BF%A1%E6%81%AF/" target="_blank">這篇文章</a>，依據使用主題不同會有不一樣的設定方式。我個人是將js引入到<code>hugo-nuo\layouts\partials\head.html</code>、網站統計放到<code>hugo-nuo\layouts\partials\footer.html</code>、文章統計放到<code>hugo-nuo\layouts\post\single.html</code></p>
+
+<h3 id="後記">後記</h3>
+
+<p>感覺起來Hugo滿容易使用的，但目前好像還沒有發現像Hexo那樣有一些plugin可以用，顯得簡潔許多，也可以更專注在Blog的內容上</p>
+
+<h3 id="其他參考資料">其他參考資料</h3>
+
+<ul>
+<li><a href="https://lucumt.info/posts/create-website-with-hugo/" target="_blank">利用Github Pages和基于Go的Hugo搭建个人博客</a></li>
+<li><a href="http://git.bookislife.com/post/2015/how-to-use-hugo/" target="_blank">如何使用 Hugo 搭建个人博客</a></li>
+<li><a href="https://xusiwei.github.io/post/2016/build-blog-with-hugo-and-github-pages/" target="_blank">用Hugo和GitHub Pages搭建博客</a></li>
+<li><a href="https://iorz.cc/hugo/" target="_blank">Hugo 快速的靜態網頁引擎</a></li>
+<li><a href="https://studygolang.com/articles/4923" target="_blank">使用Hugo搭建静态站点</a></li>
+<li><a href="https://my.oschina.net/u/2424163/blog/1561091" target="_blank">hugo使用备忘录</a></li>
+<li><a href="http://wicast.coding.me/wicast/2015/03/23/hugo-is-cool/" target="_blank">Hugo is cool</a></li>
+</ul></article>
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -471,7 +470,7 @@ git push origin master
             return;
         }
         var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "ahjiong" + '.disqus.com/embed.js';
+        s.src = '//' + "carrielaiblog" + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
@@ -525,7 +524,11 @@ ga('send', 'pageview');
 
 
 
-
+<div style="text-align: center;">
+  <span id="busuanzi_container_site_uv">
+    <span>本站訪客數<span id="busuanzi_value_site_uv"></span>人次</span>
+  </span>
+</div>
 
   </body>
 </html>
