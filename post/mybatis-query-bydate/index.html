@@ -16,26 +16,32 @@
 
   
   <meta name="author" content="Carrie Lai" />
-  <meta name="description" content="最近時常會接到USER打電話來反映：「你們的XX功能查詢起來好慢啊，跑了十幾分鐘結果最後顯示系統發生例外錯誤(Timeout了&amp;hellip;😱😱😱)」
-實際在測試環境的畫面上測試，運氣好點也得花上個8、9分鐘才跑出結果來，更多時候是無情的Timeout，查詢結果筆數並沒有很多，幾十筆而已，有的時候甚至沒有符合條件的結果。玄的是同樣的SQL直接在DB上面執行大約不到10秒就好了" />
+  <meta name="description" content="最近時常會接到USER打電話來反映：「你們的XX功能查詢起來好慢啊，跑了十幾分鐘結果最後顯示系統發生例外錯誤(Timeout了&amp;hellip;)」
+一開始原本以為是正式環境的資料庫忙碌導致的，因為有幾次是請USER晚一點再去查詢就沒問題了，但後來就算USER在離峰時間查也一樣會Timeout，看起來可能真的是哪個部分出了問題
+
+" />
 
   
   
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@gohugoio" />
     <meta name="twitter:title" content="【工作上遇到的坑】Mybatis的日期查詢" />
-    <meta name="twitter:description" content="最近時常會接到USER打電話來反映：「你們的XX功能查詢起來好慢啊，跑了十幾分鐘結果最後顯示系統發生例外錯誤(Timeout了&amp;hellip;😱😱😱)」
-實際在測試環境的畫面上測試，運氣好點也得花上個8、9分鐘才跑出結果來，更多時候是無情的Timeout，查詢結果筆數並沒有很多，幾十筆而已，有的時候甚至沒有符合條件的結果。玄的是同樣的SQL直接在DB上面執行大約不到10秒就好了" />
-    <meta name="twitter:image" content="https://Carrie-Lai.github.io/img/avatar.jpg" />
+    <meta name="twitter:description" content="最近時常會接到USER打電話來反映：「你們的XX功能查詢起來好慢啊，跑了十幾分鐘結果最後顯示系統發生例外錯誤(Timeout了&amp;hellip;)」
+一開始原本以為是正式環境的資料庫忙碌導致的，因為有幾次是請USER晚一點再去查詢就沒問題了，但後來就算USER在離峰時間查也一樣會Timeout，看起來可能真的是哪個部分出了問題
+
+" />
+    <meta name="twitter:image" content="https://Carrie-Lai.github.io/media/posts/mybatis-query-bydate/img2.png" />
   
 
   
   <meta property="og:type" content="article" />
   <meta property="og:title" content="【工作上遇到的坑】Mybatis的日期查詢" />
-  <meta property="og:description" content="最近時常會接到USER打電話來反映：「你們的XX功能查詢起來好慢啊，跑了十幾分鐘結果最後顯示系統發生例外錯誤(Timeout了&amp;hellip;😱😱😱)」
-實際在測試環境的畫面上測試，運氣好點也得花上個8、9分鐘才跑出結果來，更多時候是無情的Timeout，查詢結果筆數並沒有很多，幾十筆而已，有的時候甚至沒有符合條件的結果。玄的是同樣的SQL直接在DB上面執行大約不到10秒就好了" />
+  <meta property="og:description" content="最近時常會接到USER打電話來反映：「你們的XX功能查詢起來好慢啊，跑了十幾分鐘結果最後顯示系統發生例外錯誤(Timeout了&amp;hellip;)」
+一開始原本以為是正式環境的資料庫忙碌導致的，因為有幾次是請USER晚一點再去查詢就沒問題了，但後來就算USER在離峰時間查也一樣會Timeout，看起來可能真的是哪個部分出了問題
+
+" />
   <meta property="og:url" content="https://Carrie-Lai.github.io/post/mybatis-query-bydate/" />
-  <meta property="og:image" content="https://Carrie-Lai.github.io/img/avatar.jpg" />
+  <meta property="og:image" content="https://Carrie-Lai.github.io/media/posts/mybatis-query-bydate/img2.png" />
 
 
 
@@ -229,7 +235,7 @@
   <section class="main post-detail">
     <header class="post-header">
       <h1 class="post-title">【工作上遇到的坑】Mybatis的日期查詢</h1>
-      <p class="post-meta">@Carrie Lai · Feb 7, 2018 · 約2 字 · 1 min read
+      <p class="post-meta">@Carrie Lai · Feb 7, 2018 · 約16 字 · 1 min read
         <span id="busuanzi_container_page_pv">
           · 本文總點閱數<span id="busuanzi_value_page_pv"></span>次
         </span>
@@ -242,10 +248,26 @@
       </p>
 
     </header>
-    <article class="post-content"><p>最近時常會接到USER打電話來反映：「你們的XX功能查詢起來好慢啊，跑了十幾分鐘結果最後顯示系統發生例外錯誤(Timeout了&hellip;😱😱😱)」</p>
+    <article class="post-content"><p>最近時常會接到USER打電話來反映：「你們的XX功能查詢起來好慢啊，跑了十幾分鐘結果最後顯示系統發生例外錯誤(Timeout了&hellip;)」</p>
 
-<p>實際在測試環境的畫面上測試，運氣好點也得花上個8、9分鐘才跑出結果來，更多時候是無情的Timeout，查詢結果筆數並沒有很多，幾十筆而已，有的時候甚至沒有符合條件的結果。玄的是同樣的SQL直接在DB上面執行大約不到10秒就好了</p>
-</article>
+<p><img src="https://Carrie-Lai.github.io/media/posts/mybatis-query-bydate/img1.jpg" alt="" /></p>
+
+<p>一開始原本以為是正式環境的資料庫忙碌導致的，因為有幾次是請USER晚一點再去查詢就沒問題了，但後來就算USER在離峰時間查也一樣會Timeout，看起來可能真的是哪個部分出了問題</p>
+
+<p></p>
+
+<p>實際在開發環境的畫面上測試，運氣好點也得花上個8、9分鐘才跑出結果來，更多時候是無情的Timeout，查詢結果筆數並沒有很多，幾十筆而已，有的時候甚至沒有符合條件的結果。玄的是同樣的SQL直接在DB上面執行大約不到10秒就好了(我們用的DB是Informix)</p>
+
+<p>後來想說是不是程式的問題(資料庫連線那些)，但資料庫連線是由Spring在管理，設定檔是架構組寫好包起來給整個專案的所有子系統共用的，而且只要這段SQL能順利跑完，後面的其他SQL執行起來都很快，應該不會有問題，Console裡面顯示的log也只有顯示執行的SQL指令之後就沒什麼特別相關的訊息了，所以也排除是程式寫錯的因素</p>
+
+<p>這下只剩SQL本身的寫法了，昨天我針對SQL當中各種我認為可能會導致效能變差的部分做改善，首先將RTRIM去掉，改在程式當中將字串的空白去掉&hellip;一點效果都沒有，將order by去掉，改在程式當中排序&hellip;也是無效。接著我想到一個很重要的線索：只要沒有輸入日期區間，查詢速度就會很快，最後終於發現問題點，where條件當中的</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">AND
+	date(xxx_dt) &gt;= #{changeDtStart}
+AND
+	#{changeDtEnd} &gt;= date(xxx_dt)</code></pre></div>
+<p>table當中的xxx_dt欄位，型態是datetime(年月日時分秒)，有建索引，changeDtStart和changeDtEnd兩個屬性是java.util.date，是來自於USER在畫面上輸入的起訖日(年月日)，可能當時寫這段SQL的人覺得要把xxx_dt強制轉成年月日再來比較，導致某個部分卡住了(不知道是mybatis解析/轉譯這段的速度很慢，還是因為加了date()函數讓索引失效導致效能極差)，替代方式是將date()拿掉，並使用Calendar類別將訖日的時間設定為當天23:59:59後再轉回Date，查詢出的結果是正確的，且速度快了近百倍</p>
+
+<p>後來搜尋了一下我們子系統中的SQL有用到date()的地方，結果居然有幾百個&hellip;真的是個大坑啊</p></article>
     <footer class="post-footer">
       
       <ul class="post-tags">

@@ -19,7 +19,7 @@
       
       <guid>https://Carrie-Lai.github.io/about/</guid>
       <description> 簡介  Java Web工程師一枚
-  工業工程與管理系畢業 資策會Java班結訓 努力成長中  關於J星人的世界  記錄所學，記錄生活
+  工業工程與管理系畢業 資策會Java班結訓 努力成長中  關於J星人的世界  記錄所學，記錄生活，努力修行，成就更好的自己
  大事紀  2018.01.27 Hello Hugo!  使用的元素  主題：Hugo Nuo 頭像：豆助  </description>
     </item>
     
@@ -38,8 +38,13 @@
       <pubDate>Wed, 07 Feb 2018 22:30:11 +0800</pubDate>
       
       <guid>https://Carrie-Lai.github.io/post/mybatis-query-bydate/</guid>
-      <description>最近時常會接到USER打電話來反映：「你們的XX功能查詢起來好慢啊，跑了十幾分鐘結果最後顯示系統發生例外錯誤(Timeout了&amp;hellip;😱😱😱)」
-實際在測試環境的畫面上測試，運氣好點也得花上個8、9分鐘才跑出結果來，更多時候是無情的Timeout，查詢結果筆數並沒有很多，幾十筆而已，有的時候甚至沒有符合條件的結果。玄的是同樣的SQL直接在DB上面執行大約不到10秒就好了</description>
+      <description>&lt;p&gt;最近時常會接到USER打電話來反映：「你們的XX功能查詢起來好慢啊，跑了十幾分鐘結果最後顯示系統發生例外錯誤(Timeout了&amp;hellip;)」&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://Carrie-Lai.github.io/media/posts/mybatis-query-bydate/img1.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;一開始原本以為是正式環境的資料庫忙碌導致的，因為有幾次是請USER晚一點再去查詢就沒問題了，但後來就算USER在離峰時間查也一樣會Timeout，看起來可能真的是哪個部分出了問題&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
