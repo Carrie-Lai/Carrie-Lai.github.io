@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>https://Carrie-Lai.github.io/post/mybatis-query-bydate/</loc>
+    <lastmod>2018-02-07T22:30:11+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://Carrie-Lai.github.io/post/createhugoblog/</loc>
     <lastmod>2018-01-28T00:09:10+08:00</lastmod>
   </url>
@@ -40,20 +45,26 @@
   </url>
   
   <url>
+    <loc>https://Carrie-Lai.github.io/categories/github/</loc>
+    <lastmod>2018-01-28T00:09:10+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://Carrie-Lai.github.io/tags/github-pages/</loc>
+    <lastmod>2018-01-28T00:09:10+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://Carrie-Lai.github.io/tags/hugo/</loc>
     <lastmod>2018-01-28T00:09:10+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://Carrie-Lai.github.io/categories/hugo/</loc>
-    <lastmod>2018-01-28T00:09:10+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://Carrie-Lai.github.io/tags/java/</loc>
-    <lastmod>2018-01-27T22:52:00+08:00</lastmod>
+    <lastmod>2018-02-07T22:30:11+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -70,8 +81,14 @@
   </url>
   
   <url>
+    <loc>https://Carrie-Lai.github.io/tags/mybatis/</loc>
+    <lastmod>2018-02-07T22:30:11+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://Carrie-Lai.github.io/post/</loc>
-    <lastmod>2018-01-28T00:09:10+08:00</lastmod>
+    <lastmod>2018-02-07T22:30:11+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -82,8 +99,20 @@
   </url>
   
   <url>
+    <loc>https://Carrie-Lai.github.io/tags/sql/</loc>
+    <lastmod>2018-02-07T22:30:11+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://Carrie-Lai.github.io/tags/</loc>
     <lastmod>2018-01-27T22:52:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://Carrie-Lai.github.io/categories/%E5%B7%A5%E4%BD%9C/</loc>
+    <lastmod>2018-02-07T22:30:11+08:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -33,6 +33,16 @@
     </item>
     
     <item>
+      <title>【工作上遇到的坑】Mybatis的日期查詢</title>
+      <link>https://Carrie-Lai.github.io/post/mybatis-query-bydate/</link>
+      <pubDate>Wed, 07 Feb 2018 22:30:11 +0800</pubDate>
+      
+      <guid>https://Carrie-Lai.github.io/post/mybatis-query-bydate/</guid>
+      <description>最近時常會接到USER打電話來反映：「你們的XX功能查詢起來好慢啊，跑了十幾分鐘結果最後顯示系統發生例外錯誤(Timeout了&amp;hellip;😱😱😱)」
+實際在測試環境的畫面上測試，運氣好點也得花上個8、9分鐘才跑出結果來，更多時候是無情的Timeout，查詢結果筆數並沒有很多，幾十筆而已，有的時候甚至沒有符合條件的結果。玄的是同樣的SQL直接在DB上面執行大約不到10秒就好了</description>
+    </item>
+    
+    <item>
       <title>使用Hugo&#43;Github Pages建置Blog</title>
       <link>https://Carrie-Lai.github.io/post/createhugoblog/</link>
       <pubDate>Sun, 28 Jan 2018 00:09:10 +0800</pubDate>

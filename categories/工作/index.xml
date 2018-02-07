@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Java on J星人的世界</title>
-    <link>https://Carrie-Lai.github.io/tags/java/</link>
-    <description>Recent content in Java on J星人的世界</description>
+    <title>工作 on J星人的世界</title>
+    <link>https://Carrie-Lai.github.io/categories/%E5%B7%A5%E4%BD%9C/</link>
+    <description>Recent content in 工作 on J星人的世界</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
     <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
     <lastBuildDate>Wed, 07 Feb 2018 22:30:11 +0800</lastBuildDate>
     
-	<atom:link href="https://Carrie-Lai.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://Carrie-Lai.github.io/categories/%E5%B7%A5%E4%BD%9C/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,19 +20,6 @@
       <guid>https://Carrie-Lai.github.io/post/mybatis-query-bydate/</guid>
       <description>最近時常會接到USER打電話來反映：「你們的XX功能查詢起來好慢啊，跑了十幾分鐘結果最後顯示系統發生例外錯誤(Timeout了&amp;hellip;😱😱😱)」
 實際在測試環境的畫面上測試，運氣好點也得花上個8、9分鐘才跑出結果來，更多時候是無情的Timeout，查詢結果筆數並沒有很多，幾十筆而已，有的時候甚至沒有符合條件的結果。玄的是同樣的SQL直接在DB上面執行大約不到10秒就好了</description>
-    </item>
-    
-    <item>
-      <title>StringUtils、CollectionUtils與BeanUtils</title>
-      <link>https://Carrie-Lai.github.io/post/threeutils/</link>
-      <pubDate>Sat, 27 Jan 2018 22:52:00 +0800</pubDate>
-      
-      <guid>https://Carrie-Lai.github.io/post/threeutils/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;本文為舊站搬過來的內容，原寫於2016-12-17&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

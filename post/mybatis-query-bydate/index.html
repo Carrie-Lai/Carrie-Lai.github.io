@@ -5,11 +5,7 @@
   <meta charset="utf-8" />
 
   
-  <title>
-  Tag → blog
-  
-   | J星人的世界
-</title>
+  <title>【工作上遇到的坑】Mybatis的日期查詢</title>
 
   
   
@@ -20,20 +16,25 @@
 
   
   <meta name="author" content="Carrie Lai" />
-  <meta name="description" content="學海無涯，唯勤是岸；江水滔滔，終成大海；細雨綿綿，乃能穿石。" />
+  <meta name="description" content="最近時常會接到USER打電話來反映：「你們的XX功能查詢起來好慢啊，跑了十幾分鐘結果最後顯示系統發生例外錯誤(Timeout了&amp;hellip;😱😱😱)」
+實際在測試環境的畫面上測試，運氣好點也得花上個8、9分鐘才跑出結果來，更多時候是無情的Timeout，查詢結果筆數並沒有很多，幾十筆而已，有的時候甚至沒有符合條件的結果。玄的是同樣的SQL直接在DB上面執行大約不到10秒就好了" />
 
   
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:site" content="@gohugoio" />
-  <meta name="twitter:title" content="J星人的世界" />
-  <meta name="twitter:description" content="學海無涯，唯勤是岸；江水滔滔，終成大海；細雨綿綿，乃能穿石。" />
-  <meta name="twitter:image" content="https://Carrie-Lai.github.io/img/avatar.jpg" />
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="【工作上遇到的坑】Mybatis的日期查詢" />
+    <meta name="twitter:description" content="最近時常會接到USER打電話來反映：「你們的XX功能查詢起來好慢啊，跑了十幾分鐘結果最後顯示系統發生例外錯誤(Timeout了&amp;hellip;😱😱😱)」
+實際在測試環境的畫面上測試，運氣好點也得花上個8、9分鐘才跑出結果來，更多時候是無情的Timeout，查詢結果筆數並沒有很多，幾十筆而已，有的時候甚至沒有符合條件的結果。玄的是同樣的SQL直接在DB上面執行大約不到10秒就好了" />
+    <meta name="twitter:image" content="https://Carrie-Lai.github.io/img/avatar.jpg" />
+  
 
   
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="J星人的世界" />
-  <meta property="og:description" content="學海無涯，唯勤是岸；江水滔滔，終成大海；細雨綿綿，乃能穿石。" />
-  <meta property="og:url" content="https://Carrie-Lai.github.io/tags/blog/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="【工作上遇到的坑】Mybatis的日期查詢" />
+  <meta property="og:description" content="最近時常會接到USER打電話來反映：「你們的XX功能查詢起來好慢啊，跑了十幾分鐘結果最後顯示系統發生例外錯誤(Timeout了&amp;hellip;😱😱😱)」
+實際在測試環境的畫面上測試，運氣好點也得花上個8、9分鐘才跑出結果來，更多時候是無情的Timeout，查詢結果筆數並沒有很多，幾十筆而已，有的時候甚至沒有符合條件的結果。玄的是同樣的SQL直接在DB上面執行大約不到10秒就好了" />
+  <meta property="og:url" content="https://Carrie-Lai.github.io/post/mybatis-query-bydate/" />
   <meta property="og:image" content="https://Carrie-Lai.github.io/img/avatar.jpg" />
 
 
@@ -42,7 +43,7 @@
 <meta name="generator" content="Hugo 0.34" />
 
 
-<link rel="canonical" href="https://Carrie-Lai.github.io/tags/blog/" />
+<link rel="canonical" href="https://Carrie-Lai.github.io/post/mybatis-query-bydate/" />
 <link rel="alternative" href="https://Carrie-Lai.github.io/index.xml" title="J星人的世界" type="application/atom+xml" />
 
 
@@ -109,6 +110,10 @@
     <div class="suspension">
       <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
       
+        
+        <a title="Go to comments" class="to-comment" href="#disqus_thread"><span class="icon icon-comment"></span></a>
+        
+      
     </div>
     
     
@@ -131,6 +136,8 @@
         <li class="menu-item
             
             
+            
+              is-active
             ">
             <a href="https://Carrie-Lai.github.io/">首頁</a>
           </li>
@@ -219,36 +226,64 @@
   </nav>
 </header>
 
-  <section class="main post-list">
-    <header class="list-header offscreen">
-      <h2 class="list-label">Posts List</h2>
-    </header>
-    
-    
-      
-        <article class="post-entry">
-  <header class="post-header">
-    <h3 class="post-title"><a href="https://Carrie-Lai.github.io/post/createhugoblog/" class="post-link">使用Hugo&#43;Github Pages建置Blog</a></h3>
-    <p class="post-meta">@Carrie Lai · Jan 28, 2018 · 2 min read
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">【工作上遇到的坑】Mybatis的日期查詢</h1>
+      <p class="post-meta">@Carrie Lai · Feb 7, 2018 · 約2 字 · 1 min read
+        <span id="busuanzi_container_page_pv">
+          · 本文總點閱數<span id="busuanzi_value_page_pv"></span>次
+        </span>
         <span class="post-category">
             · 文章分類：
             
-              <a href="https://Carrie-Lai.github.io/categories/github/"> GitHub </a>
+              <a href="https://Carrie-Lai.github.io/categories/%E5%B7%A5%E4%BD%9C/"> 工作 </a>
             
           </span>
-    </p>
-  </header>
-  
-  <p class="post-summary">花了一個晚上在弄Hugo的環境，得把過程記下來避免之後忘記
+      </p>
 
-</p>
-  <footer class="post-footer">
-    <a class="read-more" href="https://Carrie-Lai.github.io/post/createhugoblog/">Read More →</a>
-  </footer>
+    </header>
+    <article class="post-content"><p>最近時常會接到USER打電話來反映：「你們的XX功能查詢起來好慢啊，跑了十幾分鐘結果最後顯示系統發生例外錯誤(Timeout了&hellip;😱😱😱)」</p>
+
+<p>實際在測試環境的畫面上測試，運氣好點也得花上個8、9分鐘才跑出結果來，更多時候是無情的Timeout，查詢結果筆數並沒有很多，幾十筆而已，有的時候甚至沒有符合條件的結果。玄的是同樣的SQL直接在DB上面執行大約不到10秒就好了</p>
 </article>
-
+    <footer class="post-footer">
       
+      <ul class="post-tags">
+        
+          <li><a href="https://Carrie-Lai.github.io/tags/mybatis"><span class="tag">Mybatis</span></a></li>
+        
+          <li><a href="https://Carrie-Lai.github.io/tags/java"><span class="tag">Java</span></a></li>
+        
+          <li><a href="https://Carrie-Lai.github.io/tags/sql"><span class="tag">SQL</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.
+      </p>
+    </footer>
     
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "carrielaiblog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
     
   </section>
   <footer class="site-footer">
