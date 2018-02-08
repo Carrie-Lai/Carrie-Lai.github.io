@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Java on J星人的世界</title>
-    <link>https://Carrie-Lai.github.io/categories/java/</link>
-    <description>Recent content in Java on J星人的世界</description>
+    <title>Database on J星人的世界</title>
+    <link>https://Carrie-Lai.github.io/tags/database/</link>
+    <description>Recent content in Database on J星人的世界</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
     <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
     <lastBuildDate>Thu, 08 Feb 2018 07:14:32 +0800</lastBuildDate>
     
-	<atom:link href="https://Carrie-Lai.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://Carrie-Lai.github.io/tags/database/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,19 +19,6 @@
       
       <guid>https://Carrie-Lai.github.io/post/mysql_new_jdbcdriver/</guid>
       <description>&lt;p&gt;最近在看書學些新東西，用的DB是MySQL，一如既往到mvnrepository找dependency貼到pom.xml中，這次想說用較新的版本看看，就拿了6.0.6版本的，裝好並設定好mybatis的資料庫連線以後一執行&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>StringUtils、CollectionUtils與BeanUtils</title>
-      <link>https://Carrie-Lai.github.io/post/threeutils/</link>
-      <pubDate>Sat, 27 Jan 2018 22:52:00 +0800</pubDate>
-      
-      <guid>https://Carrie-Lai.github.io/post/threeutils/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;本文為舊站搬過來的內容，原寫於2016-12-17&lt;/p&gt;
-&lt;/blockquote&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

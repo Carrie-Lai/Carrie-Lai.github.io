@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>MySQL新版JDBC Driver設定</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="Carrie Lai" />
+  <meta name="description" content="最近在看書學些新東西，用的DB是MySQL，一如既往到mvnrepository找dependency貼到pom.xml中，這次想說用較新的版本看看，就拿了6.0.6版本的，裝好並設定好mybatis的資料庫連線以後一執行&amp;hellip;
+
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="MySQL新版JDBC Driver設定" />
+    <meta name="twitter:description" content="最近在看書學些新東西，用的DB是MySQL，一如既往到mvnrepository找dependency貼到pom.xml中，這次想說用較新的版本看看，就拿了6.0.6版本的，裝好並設定好mybatis的資料庫連線以後一執行&amp;hellip;
+
+" />
+    <meta name="twitter:image" content="https://Carrie-Lai.github.io/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="MySQL新版JDBC Driver設定" />
+  <meta property="og:description" content="最近在看書學些新東西，用的DB是MySQL，一如既往到mvnrepository找dependency貼到pom.xml中，這次想說用較新的版本看看，就拿了6.0.6版本的，裝好並設定好mybatis的資料庫連線以後一執行&amp;hellip;
+
+" />
+  <meta property="og:url" content="https://Carrie-Lai.github.io/post/mysql_new_jdbcdriver/" />
+  <meta property="og:image" content="https://Carrie-Lai.github.io/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.34" />
+
+
+<link rel="canonical" href="https://Carrie-Lai.github.io/post/mysql_new_jdbcdriver/" />
+<link rel="alternative" href="https://Carrie-Lai.github.io/index.xml" title="J星人的世界" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="wSLxwoc2zA36x4vRrmirCr0MeR1luAAvgHhtSvjbyxU" />
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="J星人的世界" />
+<meta name="msapplication-tooltip" content="J星人的世界" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://Carrie-Lai.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://Carrie-Lai.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://Carrie-Lai.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://Carrie-Lai.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://Carrie-Lai.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://Carrie-Lai.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://Carrie-Lai.github.io/css/bundle.css" />
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+        <a title="Go to comments" class="to-comment" href="#disqus_thread"><span class="icon icon-comment"></span></a>
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://Carrie-Lai.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">J星人的世界</h2>
+  
+  <p class="subtitle">/* A Java Programmer */</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://Carrie-Lai.github.io/">首頁</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://Carrie-Lai.github.io/tags/">標籤</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://Carrie-Lai.github.io/categories/">分類</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://Carrie-Lai.github.io/about/">關於</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://Carrie-Lai.github.io/links/">友情連結</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://Carrie-Lai.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">MySQL新版JDBC Driver設定</h1>
+      <p class="post-meta">@Carrie Lai · Feb 8, 2018 · 約160 字 · 1 min read
+        <span id="busuanzi_container_page_pv">
+          · 本文總點閱數<span id="busuanzi_value_page_pv"></span>次
+        </span>
+        <span class="post-category">
+            · 文章分類：
+            
+              <a href="https://Carrie-Lai.github.io/categories/java/"> JAVA </a>
+            
+          </span>
+      </p>
+
+    </header>
+    <article class="post-content"><p>最近在看書學些新東西，用的DB是MySQL，一如既往到mvnrepository找dependency貼到pom.xml中，這次想說用較新的版本看看，就拿了6.0.6版本的，裝好並設定好mybatis的資料庫連線以後一執行&hellip;</p>
+
+<p></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Loading class <span style="color:#e6db74">`</span>com.mysql.jdbc.Driver<span style="color:#e6db74">&#39;. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver&#39;</span>. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.</code></pre></div>
+<p>趕緊換回以前常用的5.1.39版看看，可以正常執行，看來是新版本的Driver做了什麼改變，順著訊息的描述將設定檔的driver名稱改為<code>com.mysql.cj.jdbc.Driver</code>，一執行又出現新的錯誤訊息</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">java.sql.SQLException: The server time zone value <span style="color:#e6db74">&#39;�x�_�зǮɶ�&#39;</span> is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver <span style="color:#f92672">(</span>via the serverTimezone configuration property<span style="color:#f92672">)</span> to use a more specifc time zone value <span style="color:#66d9ef">if</span> you want to utilize time zone support.</code></pre></div>
+<p>沒看錯，真的就是<code>'�x�_�зǮɶ�'</code>，看起來是無法辨識時區，這次修改jdbc url，加上serverTimezone的相關設定(CST是中原標準時間)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">jdbc:mysql://localhost:3306/myDB?serverTimezone=CST</code></pre></div>
+<p>再執行就正常了，不過還有個從我用5.1.39版就會出現的提示訊息，是跟SSL相關的</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Establishing SSL connection without server<span style="color:#e6db74">&#39;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&#39;</span>t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to <span style="color:#e6db74">&#39;false&#39;</span>. You need either to explicitly disable SSL by setting useSSL<span style="color:#f92672">=</span>false, or set useSSL<span style="color:#f92672">=</span>true and provide truststore <span style="color:#66d9ef">for</span> server certificate verification.</code></pre></div>
+<p>如果沒有要用SSL的話，在jdbc url後面加上useSSL=false的設定即可</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">jdbc:mysql://localhost:3306/myDB?serverTimezone<span style="color:#f92672">=</span>CST&amp;useSSL<span style="color:#f92672">=</span>false</code></pre></div>
+<p><strong>注意</strong>：如果是在XML設定檔中設定，需將<code>&amp;</code>換成<code>&amp;amp;</code>，否則會有例外錯誤</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">實體 <span style="color:#e6db74">&#34;useSSL&#34;</span> 的參照結尾必須為 <span style="color:#e6db74">&#39;;&#39;</span> 分界字元。</code></pre></div>
+<p>參考資料：<a href="http://blog.csdn.net/superdangbo/article/details/78732700">com.mysql.jdbc.Driver 和 com.mysql.cj.jdbc.Driver的区别 serverTimezone设定</a></p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://Carrie-Lai.github.io/tags/database"><span class="tag">Database</span></a></li>
+        
+          <li><a href="https://Carrie-Lai.github.io/tags/jdbc"><span class="tag">JDBC</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.
+      </p>
+    </footer>
+    
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "carrielaiblog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 J星人的世界</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://Carrie-Lai.github.io/js/bundle.js"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-40443654-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+<div style = "text-align: center;" >
+  <span id="busuanzi_container_site_uv">
+    本站訪客數<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div>
+
+  </body>
+</html>
