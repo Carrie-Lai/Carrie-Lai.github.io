@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>從Youtube取得特定播放清單的資訊</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="Carrie Lai" />
+  <meta name="description" content="我有時候會把youtube上一些不錯的影片或好聽的歌集中到播放清單裡面，方便日後觀看，或是在做事情時放出來聽
+但常常會遇到某個影片被刪除或者是上傳者的帳號被停權，這時在播放清單裡就只會看到
+可能時間久了也忘了原本是什麼東西了，很難再找回來，如果在一開始就將整個播放清單的資訊記錄下來的話，就可以避免這種情況發生
+
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="從Youtube取得特定播放清單的資訊" />
+    <meta name="twitter:description" content="我有時候會把youtube上一些不錯的影片或好聽的歌集中到播放清單裡面，方便日後觀看，或是在做事情時放出來聽
+但常常會遇到某個影片被刪除或者是上傳者的帳號被停權，這時在播放清單裡就只會看到
+可能時間久了也忘了原本是什麼東西了，很難再找回來，如果在一開始就將整個播放清單的資訊記錄下來的話，就可以避免這種情況發生
+
+" />
+    <meta name="twitter:image" content="https://Carrie-Lai.github.io/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="從Youtube取得特定播放清單的資訊" />
+  <meta property="og:description" content="我有時候會把youtube上一些不錯的影片或好聽的歌集中到播放清單裡面，方便日後觀看，或是在做事情時放出來聽
+但常常會遇到某個影片被刪除或者是上傳者的帳號被停權，這時在播放清單裡就只會看到
+可能時間久了也忘了原本是什麼東西了，很難再找回來，如果在一開始就將整個播放清單的資訊記錄下來的話，就可以避免這種情況發生
+
+" />
+  <meta property="og:url" content="https://Carrie-Lai.github.io/post/get_playlistitem_from_youtube/" />
+  <meta property="og:image" content="https://Carrie-Lai.github.io/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.34" />
+
+
+<link rel="canonical" href="https://Carrie-Lai.github.io/post/get_playlistitem_from_youtube/" />
+<link rel="alternative" href="https://Carrie-Lai.github.io/index.xml" title="J星人的世界" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="wSLxwoc2zA36x4vRrmirCr0MeR1luAAvgHhtSvjbyxU" />
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="J星人的世界" />
+<meta name="msapplication-tooltip" content="J星人的世界" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://Carrie-Lai.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://Carrie-Lai.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://Carrie-Lai.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://Carrie-Lai.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://Carrie-Lai.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://Carrie-Lai.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://Carrie-Lai.github.io/css/bundle.css" />
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+        <a title="Go to comments" class="to-comment" href="#disqus_thread"><span class="icon icon-comment"></span></a>
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://Carrie-Lai.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">J星人的世界</h2>
+  
+  <p class="subtitle">/* A Java Programmer */</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://Carrie-Lai.github.io/">首頁</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://Carrie-Lai.github.io/tags/">標籤</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://Carrie-Lai.github.io/categories/">分類</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://Carrie-Lai.github.io/about/">關於</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://Carrie-Lai.github.io/links/">友情連結</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://Carrie-Lai.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">從Youtube取得特定播放清單的資訊</h1>
+      <p class="post-meta">@Carrie Lai · Feb 16, 2018 ·2 min read
+        <span class="post-category">
+            · 文章分類：
+            
+              <a href="https://Carrie-Lai.github.io/categories/java/"> Java </a>
+            
+          </span>
+      </p>
+
+    </header>
+    <article class="post-content"><p>我有時候會把youtube上一些不錯的影片或好聽的歌集中到播放清單裡面，方便日後觀看，或是在做事情時放出來聽</p>
+
+<p>但常常會遇到某個影片被刪除或者是上傳者的帳號被停權，這時在播放清單裡就只會看到</p>
+
+<p><img src="https://Carrie-Lai.github.io/media/posts/get_playlistitem_from_youtube/1518795396408.jpg" alt="" /></p>
+
+<p>可能時間久了也忘了原本是什麼東西了，很難再找回來，如果在一開始就將整個播放清單的資訊記錄下來的話，就可以避免這種情況發生</p>
+
+<p></p>
+
+<p>原本是想試著用YouTube Data API v3來實作，但東西實在太多了，一時間無法消化，所以還是用JSON比較簡單，以後有機會再來好好研究YouTube Data API v3的內容</p>
+
+<h2 id="程式目的">程式目的</h2>
+
+<p>從播放清單中抓出每個影片的標題和網址，寫入excel檔案中</p>
+
+<h2 id="前置作業">前置作業</h2>
+
+<ul>
+<li>首先需要申請一個金鑰，可以參考<a href="http://blog.elaine-iic.tw/2015/06/youtube-data-api-v3-key.html" target="_blank">這篇文章</a>到Google Developers Console去申請，雖然是2年多前的文章，但步驟差不多</li>
+<li>建立Java專案，需要引入的API有<a href="https://mvnrepository.com/artifact/org.jsoup/jsoup/1.11.2" target="_blank">JSoup</a>、<a href="https://mvnrepository.com/artifact/org.json/json/20180130" target="_blank">JSON</a>、<a href="https://mvnrepository.com/artifact/org.apache.poi/poi/3.14" target="_blank">Apache POI</a>、<a href="https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml/3.14" target="_blank">poi-ooxml</a>(POI我用3.14版的，新版用起來會有些奇怪的狀況)</li>
+</ul>
+
+<h2 id="程式">程式</h2>
+
+<ul>
+<li>我準備了一個POJO名為Item，包含影片標題title及影片網址videoUrl兩個屬性</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Item</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#75715e">/** 影片標題 */</span>
+    <span style="color:#66d9ef">private</span> String title<span style="color:#f92672">;</span>
+    <span style="color:#75715e">/** 影片網址 */</span>
+    <span style="color:#66d9ef">private</span> String videoUrl<span style="color:#f92672">;</span>
+    
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Item</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#f92672">}</span>
+    
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Item</span><span style="color:#f92672">(</span>String title<span style="color:#f92672">,</span> String videoUrl<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> title<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">videoUrl</span> <span style="color:#f92672">=</span> videoUrl<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getTitle</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> title<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setTitle</span><span style="color:#f92672">(</span>String title<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> title<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getVideoUrl</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> videoUrl<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setVideoUrl</span><span style="color:#f92672">(</span>String videoUrl<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">videoUrl</span> <span style="color:#f92672">=</span> videoUrl<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<ul>
+<li>主要類別YoutubePlayListItemGetter
+
+<ul>
+<li>先宣告兩個網址以及要裝影片資訊的List
+
+<ul>
+<li>將baseUrl直接貼到網址列上進入會發現是一個JSON格式的內容
+<img src="https://Carrie-Lai.github.io/media/posts/get_playlistitem_from_youtube/1518796951195.jpg" alt="" /></li>
+<li>youtubeUrlPrefix：之後拿來串接網址</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String baseUrl <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&amp;maxResults=50&amp;playlistId=[播放清單id]&amp;key=[申請好的金鑰]&#34;</span><span style="color:#f92672">;</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String youtubeUrlPrefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://www.youtube.com/watch?v=&#34;</span><span style="color:#f92672">;</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> List<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">&gt;</span> itemList<span style="color:#f92672">;</span></code></pre></div>
+<p>接著分成幾個方法
+* 取得資料
+    * 因為每次最多只能取50筆，所以需呼叫本方法多次，如果後面還有東西，可以從jsonObject中取得nextPageToken，下次呼叫時將其加到baseUrl後方即可查到後面的資料，如果沒東西了，就呼叫產出excel的方法</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">getPlayListItemData</span><span style="color:#f92672">(</span>String pageTokenUrl<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+    Document doc <span style="color:#f92672">=</span> Jsoup<span style="color:#f92672">.</span><span style="color:#a6e22e">connect</span><span style="color:#f92672">(</span>baseUrl <span style="color:#f92672">+</span> pageTokenUrl<span style="color:#f92672">).</span><span style="color:#a6e22e">ignoreContentType</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">).</span><span style="color:#a6e22e">timeout</span><span style="color:#f92672">(</span>10 <span style="color:#f92672">*</span> 1000<span style="color:#f92672">).</span><span style="color:#a6e22e">get</span><span style="color:#f92672">();</span>
+    String getJson <span style="color:#f92672">=</span> doc<span style="color:#f92672">.</span><span style="color:#a6e22e">text</span><span style="color:#f92672">();</span>
+    JSONObject jsonObject <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>JSONObject<span style="color:#f92672">)</span> <span style="color:#66d9ef">new</span> JSONTokener<span style="color:#f92672">(</span>getJson<span style="color:#f92672">).</span><span style="color:#a6e22e">nextValue</span><span style="color:#f92672">();</span>
+    JSONArray jsonArray <span style="color:#f92672">=</span> jsonObject<span style="color:#f92672">.</span><span style="color:#a6e22e">getJSONArray</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;items&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> jsonArray<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">();</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+        JSONObject item <span style="color:#f92672">=</span> jsonArray<span style="color:#f92672">.</span><span style="color:#a6e22e">getJSONObject</span><span style="color:#f92672">(</span>i<span style="color:#f92672">);</span>
+        JSONObject snippet <span style="color:#f92672">=</span> item<span style="color:#f92672">.</span><span style="color:#a6e22e">getJSONObject</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;snippet&#34;</span><span style="color:#f92672">);</span>
+        itemList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Item<span style="color:#f92672">(</span>snippet<span style="color:#f92672">.</span><span style="color:#a6e22e">getString</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;title&#34;</span><span style="color:#f92672">),</span> youtubeUrlPrefix <span style="color:#f92672">+</span> snippet<span style="color:#f92672">.</span><span style="color:#a6e22e">getJSONObject</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;resourceId&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">getString</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;videoId&#34;</span><span style="color:#f92672">)));</span>
+        <span style="color:#f92672">}</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;共抓到&#34;</span> <span style="color:#f92672">+</span> jsonArray<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;個影片&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>jsonObject<span style="color:#f92672">.</span><span style="color:#a6e22e">isNull</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;nextPageToken&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+            String token <span style="color:#f92672">=</span> jsonObject<span style="color:#f92672">.</span><span style="color:#a6e22e">getString</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;nextPageToken&#34;</span><span style="color:#f92672">);</span>
+            getPlayListItemData<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;&amp;pageToken=&#34;</span> <span style="color:#f92672">+</span> token<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+            printExcel<span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span></code></pre></div>
+<ul>
+<li>產出excel檔
+
+<ul>
+<li>我是設定成產出2007版的excel，檔案會放在D槽當中</li>
+</ul></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 產出excel
+</span><span style="color:#75715e">     * @throws Exception
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printExcel</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// 設定檔名
+</span><span style="color:#75715e"></span>        SimpleDateFormat dateFormat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SimpleDateFormat<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;yyyy-MM-dd_hhmmss&#34;</span><span style="color:#f92672">);</span>
+        String date <span style="color:#f92672">=</span> dateFormat<span style="color:#f92672">.</span><span style="color:#a6e22e">format</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Date<span style="color:#f92672">());</span>
+        File file2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;D:&#34;</span> <span style="color:#f92672">+</span> File<span style="color:#f92672">.</span><span style="color:#a6e22e">separator</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;播放清單資訊&#34;</span> <span style="color:#f92672">+</span> date <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.xlsx&#34;</span><span style="color:#f92672">);</span>
+        file2<span style="color:#f92672">.</span><span style="color:#a6e22e">createNewFile</span><span style="color:#f92672">();</span>
+        OutputStream out <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream<span style="color:#f92672">(</span>file2<span style="color:#f92672">);</span>
+        XSSFWorkbook workbook <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> XSSFWorkbook<span style="color:#f92672">();</span> <span style="color:#75715e">// 新版excel
+</span><span style="color:#75715e"></span>        XSSFCellStyle cellStyle <span style="color:#f92672">=</span> setExcelFormat<span style="color:#f92672">(</span>workbook<span style="color:#f92672">);</span>
+        setExcelContent<span style="color:#f92672">(</span>workbook<span style="color:#f92672">,</span> cellStyle<span style="color:#f92672">);</span>
+        <span style="color:#75715e">// 寫出檔案
+</span><span style="color:#75715e"></span>        workbook<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>out<span style="color:#f92672">);</span>
+        out<span style="color:#f92672">.</span><span style="color:#a6e22e">flush</span><span style="color:#f92672">();</span>
+        out<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+    
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 設定excel樣式
+</span><span style="color:#75715e">     * @param workbook
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">private</span> XSSFCellStyle <span style="color:#a6e22e">setExcelFormat</span><span style="color:#f92672">(</span>XSSFWorkbook workbook<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        XSSFFont font <span style="color:#f92672">=</span> workbook<span style="color:#f92672">.</span><span style="color:#a6e22e">createFont</span><span style="color:#f92672">();</span>
+        font<span style="color:#f92672">.</span><span style="color:#a6e22e">setColor</span><span style="color:#f92672">(</span>HSSFColor<span style="color:#f92672">.</span><span style="color:#a6e22e">BLACK</span><span style="color:#f92672">.</span><span style="color:#a6e22e">index</span><span style="color:#f92672">);</span>
+        XSSFCellStyle cellStyle <span style="color:#f92672">=</span> workbook<span style="color:#f92672">.</span><span style="color:#a6e22e">createCellStyle</span><span style="color:#f92672">();</span>
+        cellStyle<span style="color:#f92672">.</span><span style="color:#a6e22e">setFont</span><span style="color:#f92672">(</span>font<span style="color:#f92672">);</span>
+        cellStyle<span style="color:#f92672">.</span><span style="color:#a6e22e">setVerticalAlignment</span><span style="color:#f92672">(</span>VerticalAlignment<span style="color:#f92672">.</span><span style="color:#a6e22e">CENTER</span><span style="color:#f92672">);</span> <span style="color:#75715e">// 垂直置中
+</span><span style="color:#75715e"></span>        cellStyle<span style="color:#f92672">.</span><span style="color:#a6e22e">setWrapText</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span> <span style="color:#75715e">// 自動換行
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> cellStyle<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 放內容
+</span><span style="color:#75715e">     * @param workbook
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setExcelContent</span><span style="color:#f92672">(</span>XSSFWorkbook workbook<span style="color:#f92672">,</span> XSSFCellStyle cellStyle<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> VIDEO_TITLE_SIZE <span style="color:#f92672">=</span> 100 <span style="color:#f92672">*</span> 256<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> VIDEO_URL_SIZE <span style="color:#f92672">=</span> 50 <span style="color:#f92672">*</span> 256<span style="color:#f92672">;</span>
+        <span style="color:#75715e">// 創建工作表
+</span><span style="color:#75715e"></span>        XSSFSheet sheet <span style="color:#f92672">=</span> workbook<span style="color:#f92672">.</span><span style="color:#a6e22e">createSheet</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;播放清單資訊&#34;</span><span style="color:#f92672">);</span>
+        sheet<span style="color:#f92672">.</span><span style="color:#a6e22e">setColumnWidth</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> VIDEO_TITLE_SIZE<span style="color:#f92672">);</span>
+        sheet<span style="color:#f92672">.</span><span style="color:#a6e22e">setColumnWidth</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> VIDEO_URL_SIZE<span style="color:#f92672">);</span>
+        <span style="color:#75715e">// 創建標題列
+</span><span style="color:#75715e"></span>        XSSFRow rowTitle <span style="color:#f92672">=</span> sheet<span style="color:#f92672">.</span><span style="color:#a6e22e">createRow</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+        rowTitle<span style="color:#f92672">.</span><span style="color:#a6e22e">createCell</span><span style="color:#f92672">(</span>0<span style="color:#f92672">).</span><span style="color:#a6e22e">setCellValue</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;影片名稱&#34;</span><span style="color:#f92672">);</span>
+        rowTitle<span style="color:#f92672">.</span><span style="color:#a6e22e">createCell</span><span style="color:#f92672">(</span>1<span style="color:#f92672">).</span><span style="color:#a6e22e">setCellValue</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;網址&#34;</span><span style="color:#f92672">);</span>
+        XSSFCell cell<span style="color:#f92672">;</span>
+        <span style="color:#75715e">// 把每列資料放入
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> itemList<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            Item item <span style="color:#f92672">=</span> itemList<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>i<span style="color:#f92672">);</span>
+            XSSFRow rowContent <span style="color:#f92672">=</span> sheet<span style="color:#f92672">.</span><span style="color:#a6e22e">createRow</span><span style="color:#f92672">(</span>i <span style="color:#f92672">+</span> 1<span style="color:#f92672">);</span>
+            cell <span style="color:#f92672">=</span> rowContent<span style="color:#f92672">.</span><span style="color:#a6e22e">createCell</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+            cell<span style="color:#f92672">.</span><span style="color:#a6e22e">setCellStyle</span><span style="color:#f92672">(</span>cellStyle<span style="color:#f92672">);</span>
+            cell<span style="color:#f92672">.</span><span style="color:#a6e22e">setCellValue</span><span style="color:#f92672">(</span>item<span style="color:#f92672">.</span><span style="color:#a6e22e">getTitle</span><span style="color:#f92672">());</span>
+            cell <span style="color:#f92672">=</span> rowContent<span style="color:#f92672">.</span><span style="color:#a6e22e">createCell</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
+            cell<span style="color:#f92672">.</span><span style="color:#a6e22e">setCellStyle</span><span style="color:#f92672">(</span>cellStyle<span style="color:#f92672">);</span>
+            cell<span style="color:#f92672">.</span><span style="color:#a6e22e">setCellValue</span><span style="color:#f92672">(</span>item<span style="color:#f92672">.</span><span style="color:#a6e22e">getVideoUrl</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span></code></pre></div>
+<h2 id="效果">效果</h2>
+
+<p>在main方法中new出一個YoutubePlayListItemGetter呼叫getPlayListItemData(&ldquo;&rdquo;)，程式整個跑完後，可以在D槽中看到檔案</p>
+
+<p><img src="https://Carrie-Lai.github.io/media/posts/get_playlistitem_from_youtube/1518798136963.jpg" alt="" /></p>
+
+<p>檔案內容</p>
+
+<p><img src="https://Carrie-Lai.github.io/media/posts/get_playlistitem_from_youtube/1518798169058.jpg" alt="" /></p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<p><a href="https://www.joe0.com/2016/03/05/youtube-data-api-v3-how-to-search-youtube-using-java-and-extract-video-id-of-the-most-relevant-result/" target="_blank">YouTube Data API v3 – How to search YouTube using Java and extract Video ID of the most relevant result?</a></p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://Carrie-Lai.github.io/tags/youtube"><span class="tag">Youtube</span></a></li>
+        
+          <li><a href="https://Carrie-Lai.github.io/tags/json"><span class="tag">Json</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.
+      </p>
+    </footer>
+    
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "carrielaiblog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 J星人的世界</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://Carrie-Lai.github.io/js/bundle.js"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-40443654-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+<div style = "text-align: center;" >
+  <span id="busuanzi_container_site_uv">
+    本站訪客數<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div>
+
+  </body>
+</html>

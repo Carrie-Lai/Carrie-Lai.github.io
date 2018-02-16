@@ -7,10 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
     <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
-    <lastBuildDate>Thu, 08 Feb 2018 07:14:32 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 16 Feb 2018 23:31:57 +0800</lastBuildDate>
     
 	<atom:link href="https://Carrie-Lai.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>從Youtube取得特定播放清單的資訊</title>
+      <link>https://Carrie-Lai.github.io/post/get_playlistitem_from_youtube/</link>
+      <pubDate>Fri, 16 Feb 2018 23:31:57 +0800</pubDate>
+      
+      <guid>https://Carrie-Lai.github.io/post/get_playlistitem_from_youtube/</guid>
+      <description>&lt;p&gt;我有時候會把youtube上一些不錯的影片或好聽的歌集中到播放清單裡面，方便日後觀看，或是在做事情時放出來聽&lt;/p&gt;
+
+&lt;p&gt;但常常會遇到某個影片被刪除或者是上傳者的帳號被停權，這時在播放清單裡就只會看到&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://Carrie-Lai.github.io/media/posts/get_playlistitem_from_youtube/1518795396408.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可能時間久了也忘了原本是什麼東西了，很難再找回來，如果在一開始就將整個播放清單的資訊記錄下來的話，就可以避免這種情況發生&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>MySQL新版JDBC Driver設定</title>
